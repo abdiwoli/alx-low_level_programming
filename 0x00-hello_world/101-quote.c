@@ -1,4 +1,4 @@
-#include <stdion.h>
+#include <stdio.h>
 /**
 * main - function is for learnung purpose
 * Return: returns 0
