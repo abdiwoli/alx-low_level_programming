@@ -26,6 +26,6 @@ int main(void)
 	c = 'a';
 	z = 'z';
 	a = 'a';
-	alpha(c, a, z);
+	alphap(c, a, z);
 	return (0);
 }
