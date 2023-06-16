@@ -9,9 +9,10 @@ int main(void)
 	int n;
 	for( c = 0; c < 10; c++)
 	{
-		for(n = 0; n < 10; n++)
-			putchar(n * c + '0' + ',');
-		putchar('\n');
+		putchar(c+'0');
+		if (c != 9)
+			putchar(',');
 	}
+	putchar('\n');
 	return (0);
 }
