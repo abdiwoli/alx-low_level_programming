@@ -10,11 +10,10 @@ int main(void)
 
 	for (c = 0; c < 16; c++)
 	{
-		putchar(c + '0');
-		if(c > 9)
-		{
+		if (c < 10)
+			putchar(c + '0');
+		else if (c > 9)
 			putchar(c - 10 + 'a');
-		}
 	}
 	putchar('\n');
 	return (0);
