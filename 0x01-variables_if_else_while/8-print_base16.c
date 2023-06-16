@@ -11,7 +11,9 @@ int main(void)
 	for (c = 0; c < 16; c++)
 	{
 		putchar(c + '0');
+		if(c>9)
+			putchar(c - 10 + 'a');
 	}
-	putchar('\n');
+	char('\n');
 	return (0);
 }
