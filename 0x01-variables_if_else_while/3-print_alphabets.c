@@ -30,6 +30,6 @@ int main(void)
 	z = 'Z';
 	a = 'A';
 	alphap(c, a, z);
-	puchar('\n');
+	putchar('\n');
 	return (0);
 }
