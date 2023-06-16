@@ -13,7 +13,6 @@ void alphap(char c, char a, char z)
 {
 	for (c = a; c < z; c++)
 	putchar(c);
-	putchar('\n');
 }
 /**
 * main - function prints small alphabets
@@ -27,5 +26,10 @@ int main(void)
 	z = 'z';
 	a = 'a';
 	alphap(c, a, z);
+	c = 'A';
+	z = 'Z';
+	a = 'A';
+	alphap(c, a, z);
+	puchar('\n');
 	return (0);
 }
