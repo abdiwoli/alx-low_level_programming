@@ -6,7 +6,7 @@
 int main(void)
 {
 	int c;
-	int n;
+
 	for( c = 0; c < 10; c++)
 	{
 		putchar(c+'0');
