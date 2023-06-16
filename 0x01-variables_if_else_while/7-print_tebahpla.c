@@ -1,8 +1,8 @@
 #include<stdio.h>
 /**
-* main - function prints small alphabets
-* Return:  return 0
-*/
+ * main - function prints small alphabets
+ * Return:  return 0
+ */
 int main(void)
 {
 	char c;
