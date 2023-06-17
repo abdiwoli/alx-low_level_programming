@@ -16,20 +16,17 @@ int main(void)
 			{
 				for (ones_digit2 = (tens_digit1 == tens_digit2) ? ones_digit1 + 1 : 0; ones_digit2 < 10; ones_digit2++)
 				{
-					putchar(tens_digit1 + '0');
-					putchar(ones_digit1 + '0');
-					putchar(' ');
-					putchar(tens_digit2 + '0');
-					putchar(ones_digit2 + '0');
+					printf("%02d %02d", tens_digit1, ones_digit1);
+					putchar(',');
 
-					if (!(tens_digit1 == 9 && ones_digit1 == 9 && tens_digit2 == 9 && ones_digit2 == 9))
+					if (tens_digit2 == 9 && ones_digit2 == 9)
 					{
-						putchar(',');
-						putchar(' ');
+						printf(" %02d %02d\n", tens_digit2, ones_digit2);
 					}
-
-					if ((tens_digit1 == 9 && ones_digit1 == 9 && tens_digit2 == 9 && ones_digit2 == 9))
-						putchar('\n');
+					else
+					{
+						printf(" %02d %02d, ", tens_digit2, ones_digit2);
+					}
 				}
 			}
 		}
