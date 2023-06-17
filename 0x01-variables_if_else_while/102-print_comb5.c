@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	int tens_digit1, ones_digit1, tens_digit2, ones_digit2;
+	int tens_digit1, ones_digit1, tens_digit2, ones_digit2; 
 
 	for (tens_digit1 = 0; tens_digit1 < 10; tens_digit1++)
 	{

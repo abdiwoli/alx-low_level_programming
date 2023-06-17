@@ -1,0 +1,11 @@
+
+    f = 1;
+        for(oneDigit = 0; oneDigit < 10; oneDigit++){
+	        for (twoDigit = f; twoDigit < 10; twoDigit++){
+		            putchar(oneDigit+'0');
+			                putchar(twoDigit+'0');
+					            putchar(',');
+						                putchar(' ');
+
+        }
+	        f += 1;
