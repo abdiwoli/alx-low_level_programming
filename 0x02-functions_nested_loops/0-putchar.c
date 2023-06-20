@@ -1,9 +1,5 @@
 #include <unistd.h>
 #include "main.h"
-/**
- * putcharprinter - is a function that prints _putchar
- * Return: retruns 0
-*/
 
 /**
  * main - main function to cal other functions
@@ -17,5 +13,6 @@ int main(void)
 
 	for (i = 0; i < 8; i++)
 		_putchar(text[i]);
+	_putchar('\n');
 	return (0);
 }
