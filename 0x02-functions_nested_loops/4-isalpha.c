@@ -6,5 +6,5 @@
 */
 int _isalpha(int c)
 {
-	return (c <= 57 && c > 47 ? 0 : 1);
+	return (c >=65 && c >= 122 ? 1 : 0);
 }
