@@ -7,6 +7,7 @@
 
 int print_last_digit(int n)
 {
+	int lastD;
 	lastD = _abs(n) % 10;
 	return (n < 0 ? lastD * -1 : lastD);
 }
