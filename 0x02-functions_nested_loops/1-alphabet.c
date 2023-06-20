@@ -2,7 +2,7 @@
  * print_alphabet - function prints lower alphpet
  * author abdiwoli
  */
-void  print_alphabet(void);
+void  print_alphabet(void)
 {
 	char c;
 
