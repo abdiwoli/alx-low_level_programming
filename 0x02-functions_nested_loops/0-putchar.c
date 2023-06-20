@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include "main.h"
 /**
  * putcharprinter - is a function that prints _putchar
  * Return: retruns 0
