@@ -1,7 +1,8 @@
 #include "main.h"
 /**
- * void print_alphabet_x10 - checks lower case
+ * _islower - checks lower cas
  * Return: int 0 or 1
+ * @c: gets chars or numbers
 */
 
 int _islower(int c)
