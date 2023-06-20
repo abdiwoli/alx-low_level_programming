@@ -5,11 +5,6 @@
  * Return: retruns 0
 */
 
-void _putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 /**
  * main - main function to cal other functions
  * Return: returns 0
