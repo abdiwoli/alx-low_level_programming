@@ -4,4 +4,4 @@
 /* _putchar function prototype*/
 void _putchar(char c);
 
-#endif  // MAIN_H
+#endif /* MAIN_H*/
