@@ -14,6 +14,7 @@ void print_to_98(int n)
 		two = n % 10;
 		_putchar(one + '0');
 		_putchar(two + '0');
+		if (n < 98)
 		_putchar(',');
 	}
 	_putchar('\n');
