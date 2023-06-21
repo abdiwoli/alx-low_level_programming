@@ -28,8 +28,8 @@ void print_times_table(int num)
                                 n3 = n2 % 10;
                                 n2 = 1;
                                 putchar(n2 + '0');
-                                putchar(n3 + '0');
                                 putchar(n4 + '0');
+                                putchar(n3 + '0');
                         }
 			 else if (n2 > 9)
                         {
