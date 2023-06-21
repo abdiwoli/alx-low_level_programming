@@ -3,7 +3,7 @@
 
 void spaceComa(void)
 {
-	_putchar(',');
+	putchar(',');
 	putchar(' ');
 }
 
