@@ -29,8 +29,8 @@ void print_to_98(int n)
                 }
 		if(_abs(one)>9)
 		{
-			three = one % 10;
-			one /= 10;
+			three = one / 10;
+			one %= 10;
 			_putchar(three + '0');
 		}
 		if (_abs(n) > 9)
