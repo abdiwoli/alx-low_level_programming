@@ -12,7 +12,7 @@ void spaceComa()
 
 void print_times_table(int num)
 {
-	int  n2, i, n3, n;
+	int  n2, i, n3, n, n4;
 
         n2 = 0;
         for (i = 0; i <= num; i++)
