@@ -12,6 +12,7 @@ void print_to_98(int n)
 	{
 		one = n / 10;
 		two = n % 10;
+		if (n > 9)
 		_putchar(one + '0');
 		_putchar(two + '0');
 		if (n < 98)
