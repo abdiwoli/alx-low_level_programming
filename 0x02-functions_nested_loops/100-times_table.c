@@ -15,7 +15,7 @@ void print_times_table(int num)
 	int  n2, i, n3, n;
 
         n2 = 0;
-        for (i = 0; i < num; i++)
+        for (i = 0; i <= num; i++)
         {
                 putchar(0 + '0');
                 spaceComa();
@@ -34,7 +34,7 @@ void print_times_table(int num)
                                 putchar(' ');
                                 putchar(n2 + '0');
                         }
-                        if (n != 9)
+                        if (n != num)
                                 spaceComa();
                 }
                 putchar('\n');
