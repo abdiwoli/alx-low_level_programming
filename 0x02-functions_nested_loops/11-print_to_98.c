@@ -20,7 +20,7 @@ void print_to_98(int n)
 {
 	int one, two, three;
 
-	while (n <= 98)
+	while (n <= 98 || n > 99)
 	{
 	        two = _abs( n) % 10;
 		one = _abs(n) / 10;
