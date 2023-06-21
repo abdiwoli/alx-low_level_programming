@@ -22,9 +22,19 @@ void print_times_table(int num)
                 for (n = 1; n <= num; n++)
                 {
                         n2 = (n * i);
-			putchar(' ');
-                        if (n2 > 9)
+			 if(n2>99)
                         {
+                                n4 = (n2 / 10) % 10;
+                                n3 = n2 % 10;
+                                n2 = 1;
+                                putchar(n2 + '0');
+                                putchar(n3 + '0');
+                                putchar(n4 + '0');
+                        }
+			 else if (n2 > 9)
+                        {
+				
+				putchar(' ');
                                 n3 = n2 / 10;
                                 n2 = n2 % 10;
                                 putchar(n3 + '0');
@@ -32,6 +42,7 @@ void print_times_table(int num)
                         }
                         else
                         {
+				putchar(' ');
 				putchar(' ');
                                 putchar(n2 + '0');
                         }
