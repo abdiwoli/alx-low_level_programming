@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-
+/**
+ * spaceComa - prints comma and space
+ */
 void spaceComa(void)
 {
 	putchar(',');
