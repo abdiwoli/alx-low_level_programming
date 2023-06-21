@@ -18,15 +18,21 @@ int _abs(int n)
 
 void print_to_98(int n)
 {
-	int one, two;
+	int one, two, three;
 
-	for (; n <=98;  n > 98 ? n--: n++)
+	while (n <= 98)
 	{
 	        two = _abs( n) % 10;
 		one = _abs(n) / 10;
 		if (n < 0){
                     _putchar('-');
                 }
+		if(_abs(one)>9)
+		{
+			three = one % 10;
+			one /= 10;
+			_putchar(three + '0');
+		}
 		if (_abs(n) > 9)
 		      _putchar(one + '0');
 		_putchar(two + '0');
@@ -35,6 +41,7 @@ void print_to_98(int n)
 			_putchar(',');
 			_putchar(' ');
 		}
+		n > 98 ? n--: n++;
 	}
 	_putchar('\n');
 }
