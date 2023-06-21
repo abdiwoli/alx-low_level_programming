@@ -25,6 +25,8 @@ void jack_bauer(void)
                                         break;
 			m2 = 0;
 		}
+		if(h1 == 2 && h2 == 3)
+			break;
 		m1 = 0;
 		h2++;
 		if (h2 == 10)
