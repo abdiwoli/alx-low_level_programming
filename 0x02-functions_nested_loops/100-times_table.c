@@ -10,12 +10,12 @@ void spaceComa()
  * print_times_table - prints table
 */
 
-void print_times_table(int number)
+void print_times_table(int n)
 {
-	int n, n2, i, n3;
+	int  n2, i, n3;
 
         n2 = 0;
-        for (i = 0; i < number; i++)
+        for (i = 0; i < n; i++)
         {
                 putchar(0 + '0');
                 spaceComa();
