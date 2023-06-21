@@ -13,7 +13,7 @@ int _abs(int n)
 /**
  * print_to_98 - prints
  * Return: retrun 0
- * @: takes int
+ * @n: takes int
  */
 void print_to_98(int n)
 {
