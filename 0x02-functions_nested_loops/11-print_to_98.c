@@ -25,7 +25,7 @@ void print_to_98(int n)
 	        two = _abs( n) % 10;
 		one = _abs(n) / 10;
 		if (n < 0){
-                    putchar('-');
+                    _putchar('-');
                 }
 		if (_abs(n) > 9)
 		      _putchar(one + '0');
