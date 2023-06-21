@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+
 /**
  * print_times_table - prints table
 */
@@ -8,7 +10,7 @@ void print_times_table(int number)
 	int n, n2, i, n3;
 
         n2 = 0;
-        for (i = 0; i < 10; i++)
+        for (i = 0; i < number; i++)
         {
                 putchar(0 + '0');
                 spaceComa();
