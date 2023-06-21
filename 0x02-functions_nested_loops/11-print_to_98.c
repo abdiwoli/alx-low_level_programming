@@ -11,12 +11,12 @@ void print_to_98(int n)
 	for (; n < 99; n++)
 	{
 		one = n / 10;
+		two = n % 10;
 		if (n < 10)
-			two = ' ';
+			_putchar(' ');
 		else
-			two = n % 10;
+			_putchar(two + '0');
 		_putchar(one + '0');
-		_putchar(two + '0');
 		if (n < 98)
 		_putchar(',');
 	}
