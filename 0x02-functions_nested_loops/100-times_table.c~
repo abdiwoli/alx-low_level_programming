@@ -1,9 +1,0 @@
-#include "main.h"
-/**
- * print_times_table - prints table
-*/
-
-void print_times_table(int n)
-{
-	
-}
