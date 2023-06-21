@@ -22,7 +22,7 @@ void print_to_98(int n)
 	int f;
 
 	n > 98 ? f = 1 : 0;
-	while (n <= 98 || n > 99)
+	while (n <= 98 || n >= 99)
 	{
 	        two = _abs( n) % 10;
 		one = _abs(n) / 10;
@@ -43,6 +43,8 @@ void print_to_98(int n)
 			_putchar(',');
 			_putchar(' ');
 		}
+		if (n == 98)
+			break;
 		n > 98 ? n--: n++;
 	}
 	_putchar('\n');
