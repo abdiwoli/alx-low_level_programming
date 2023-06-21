@@ -26,14 +26,17 @@ void times_table(void)
           
           n2 = (n * i);
           if (n2 > 9)
-          {
+	  {
               n3 = n2 / 10;
               n2 = n2 % 10;
               putchar(n3 + '0');
               putchar(n2 + '0');
-          }
-         else
-              putchar(n2  +'0');
+	  }
+	  else
+	  {
+		  putchar(' ');
+                  putchar(n2 + '0');
+	  }
         if (n != 9)
              spaceComa();
            
