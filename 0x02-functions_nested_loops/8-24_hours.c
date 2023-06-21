@@ -1,0 +1,35 @@
+#include "main.h"
+
+/**
+ * jack_bauer - prints time
+*/
+
+void jack_bauer(void)
+{
+	 int h1, h2, m1, m2;
+    while(h1<3) {
+        
+        for(m1 = 0; m1 < 6; m1++)
+        {
+            for (m2 = 0; m2 < 10; m2++){
+                
+                putchar(h1 + '0');
+                putchar(h2 + '0');
+                putchar(':');
+                putchar(m1 + '0');
+                putchar(m2 + '0');
+                putchar('\n');
+            }
+            
+            m2 = 0;
+        }
+        m1 = 0;
+        h2++;
+        if (h2 == 10){
+            h1++;
+            h2 = 0;
+        }
+        
+        
+    }
+}
