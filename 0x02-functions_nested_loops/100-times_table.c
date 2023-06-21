@@ -1,6 +1,11 @@
 #include "main.h"
 #include <stdio.h>
 
+{
+        putchar(',');
+        putchar(' ');
+}
+
 /**
  * print_times_table - prints table
 */
