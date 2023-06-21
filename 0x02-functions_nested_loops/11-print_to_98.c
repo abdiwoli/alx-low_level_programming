@@ -19,9 +19,9 @@ int _abs(int n)
 void print_to_98(int n)
 {
 	int one, two, three;
-	bool f;
+	int f;
 
-	n > 98 ? f = true : false;
+	n > 98 ? f = 1 : 0;
 	while (n <= 98 || n > 99)
 	{
 	        two = _abs( n) % 10;
