@@ -38,7 +38,7 @@ void print_to_98(int n)
 		if (_abs(n) > 9)
 		      _putchar(one + '0');
 		_putchar(two + '0');
-		if ((n < 98 || n > 98) || f==1)
+		if (n < 98 || n > 98)
 		{
 			_putchar(',');
 			_putchar(' ');
