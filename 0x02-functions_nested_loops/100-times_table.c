@@ -32,6 +32,7 @@ void print_times_table(int num)
                         else
                         {
                                 putchar(' ');
+				putchar(' ');
                                 putchar(n2 + '0');
                         }
                         if (n != num)
