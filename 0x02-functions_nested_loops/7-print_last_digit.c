@@ -21,7 +21,7 @@ int _abss(int n)
 int print_last_digit(int n)
 {
 	int lastD;
-	lastD = _abs(n) % 10;
+	lastD = _abss(n) % 10;
 	_putchar(lastD + '0');
 	_putchar(lastD + '0');
 	_putchar('\n');
