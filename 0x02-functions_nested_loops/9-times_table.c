@@ -16,7 +16,7 @@ void times_table(void)
 	int n, n2, i, n3;
 
 	n2 = 0;
-	for(i = 0; i < 10; i++ )
+	for (i = 0; i < 10; i++)
 	{
 		putchar(0 + '0');
 		spaceComa();
@@ -40,5 +40,4 @@ void times_table(void)
 		}
 		putchar('\n');
 	}
-   
 }
