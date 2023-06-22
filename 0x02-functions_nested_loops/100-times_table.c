@@ -33,6 +33,7 @@ void print_times_table(int num)
 		for (n = 1; n <= num; n++)
 		{
 			n2 = (n * i);
+			
 			if (n2 > 99)
 			{
 				n4 = (n2 / 10) % 10;
@@ -48,14 +49,13 @@ void print_times_table(int num)
 				n3 = n2 / 10;
 				n2 = n2 % 10;
 				putchar(n3 + '0');
-				putchar(n2 + '0');
 			}
 			else
 			{
 				putchar(' ');
 				putchar(' ');
-				putchar(n2 + '0');
 			}
+			putchar(n2 + '0');
 			if (n != num)
 				spaceComa();
 		}
