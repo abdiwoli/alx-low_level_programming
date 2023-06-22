@@ -27,7 +27,6 @@ void print_times_table(int num)
         for (n = 1; n <= num; n++)
         {
             n2 = (n * i);
-            n4 = 0; // Initialize n4 to avoid unused variable warning
             if (n2 > 99)
             {
                 n4 = (n2 / 10) % 10;
