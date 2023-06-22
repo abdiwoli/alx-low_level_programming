@@ -12,7 +12,7 @@ void spaceComa(void)
 void spaces(char arr[])
 {
 	for (int i = 0; i < 3; i++)
-		putchar(arr[i];
+		putchar(arr[i]);
 }
 
 /**
