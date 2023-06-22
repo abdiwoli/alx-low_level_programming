@@ -22,7 +22,7 @@ void spaces(char arr[], int i)
 void print_times_table(int num)
 {
 	int n2, i, n3, n, n4, k;
-	char arr[];
+	char arr[3];
 
 	n2 = 0;
 	for (i = 0; i <= num; i++)
