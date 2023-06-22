@@ -4,7 +4,11 @@
 /**
  * spaceComa - prints comma and space
  */
-void spaceComa(void) { putchar(','); putchar(' '); }
+void spaceComa(void)
+{
+	putchar(',');
+	putchar(' ');
+}
 
 /**
  * print_times_table - prints the times table up to the given number
@@ -13,8 +17,8 @@ void spaceComa(void) { putchar(','); putchar(' '); }
 void print_times_table(int num)
 {
 	int n2, i, n3, n, n4;
-	n2 = 0;
 
+	n2 = 0;
 	for (i = 0; i <= num; i++)
 	{
 		if (num < 0 || num > 15)
