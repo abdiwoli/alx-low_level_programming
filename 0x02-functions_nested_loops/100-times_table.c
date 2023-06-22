@@ -9,6 +9,11 @@ void spaceComa(void)
 	putchar(',');
 	putchar(' ');
 }
+void spaces(char arr[])
+{
+	for (int i = 0; i < 3; i++)
+		putchar(arr[i];
+}
 
 /**
  * print_times_table - prints the times table up to the given number
@@ -17,6 +22,7 @@ void spaceComa(void)
 void print_times_table(int num)
 {
 	int n2, i, n3, n, n4;
+	char arr[];
 
 	n2 = 0;
 	for (i = 0; i <= num; i++)
@@ -33,15 +39,16 @@ void print_times_table(int num)
 		for (n = 1; n <= num; n++)
 		{
 			n2 = (n * i);
-			
+			n2 > 99 ? arr = {1 + '0', ((n2 / 10) % 10) + '0', n2 % 10} : ;
 			if (n2 > 99)
 			{
 				n4 = (n2 / 10) % 10;
 				n3 = n2 % 10;
 				n2 = 1;
-				putchar(n2 + '0');
-				putchar(n4 + '0');
-				putchar(n3 + '0');
+				spaces(arr);
+//				putchar(n2 + '0');
+//				putchar(n4 + '0');
+//				putchar(n3 + '0');
 			}
 			else if (n2 > 9)
 			{
