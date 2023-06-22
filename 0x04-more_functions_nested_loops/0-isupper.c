@@ -7,5 +7,5 @@
 
 int _isupper(int c)
 {
-	return (c <= 97 ? 1 : 0);
+	return (c <= 90 ? 1 : 0);
 }
