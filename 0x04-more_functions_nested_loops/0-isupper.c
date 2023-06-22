@@ -2,9 +2,10 @@
 /**
  * _isupper - function uppercase
  * Return : 1 or 0
+ * @c: int param
 */
 
 int _isupper(int c)
 {
-	return <= 97 ? 1 : 0;
+	return (c<= 97 ? 1 : 0);
 }
