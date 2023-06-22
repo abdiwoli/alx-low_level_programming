@@ -9,9 +9,9 @@ void spaceComa(void)
 	putchar(',');
 	putchar(' ');
 }
-void spaces(char arr[])
+void spaces(char arr[], int i)
 {
-	for (int i = 0; i < 3; i++)
+	for (i=0; i < 3; i++)
 		putchar(arr[i]);
 }
 
@@ -21,7 +21,7 @@ void spaces(char arr[])
  */
 void print_times_table(int num)
 {
-	int n2, i, n3, n, n4;
+	int n2, i, n3, n, n4, k;
 	char arr[];
 
 	n2 = 0;
@@ -45,7 +45,7 @@ void print_times_table(int num)
 				n4 = (n2 / 10) % 10;
 				n3 = n2 % 10;
 				n2 = 1;
-				spaces(arr);
+				spaces(arr, k);
 //				putchar(n2 + '0');
 //				putchar(n4 + '0');
 //				putchar(n3 + '0');
