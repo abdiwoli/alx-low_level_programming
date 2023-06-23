@@ -5,9 +5,14 @@
  */
 void print_line(int n)
 {
-	while (n >= 0)
+	if (n <= 0)
+		_putchar('\n');
+	else
 	{
-		n--;
-		n == 0 ? _putchar('\n') : _putchar('-');
+		while (n >= 0)
+		{
+			n == 0 ? _putchar('\n') : _putchar('-');
+			n--;
+		}
 	}
 }
