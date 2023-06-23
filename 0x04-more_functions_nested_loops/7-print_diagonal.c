@@ -1,4 +1,16 @@
 #include "main.h"
+
+/**
+ * space - function makes space
+ * @n takes int
+*/
+void space(int n)
+{
+  for(; n > 0; n--)
+    {
+      _putchar(' ');
+    }
+}
 /**
  * print_diagonal - prints n * dashes
  * @n: int paramater
@@ -13,11 +25,9 @@ void print_diagonal(int n)
 
 		for (i = 1; i <= n; i++)
 		{
-			if (i == n)
-				_putchar('\\');
-			else
-				_putchar(' ');
+		       space(i);
+		       _putchar('\\');
+		       _putchar('\n');
 		}
-		_putchar('\n');
 	}
 }
