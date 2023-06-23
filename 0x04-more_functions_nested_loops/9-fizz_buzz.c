@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include "main.h"
+#include <string.h>
+/**
+ * fizz - prints numbers or fizz buzz
+ * @n: int param
+*/
+void fizz(int n)
+{
+	int i;
+	char arr[] = "Fizz";
+	char arr1[] = "Buzz";
+
+	for (i = 0; i < 4; i++)
+	{
+		if (n == 0 || n == 2)
+			putchar(arr[i]);
+		else
+			putchar(arr1[i]);
+	}
+	if (n == 2)
+	{
+		for (i = 0; i < 4; i++)
+			putchar(arr1[i]);
+	}
+}
+
+
+int main(void)
+{
+	int i;
+
+	for (i = 1; i <= 100; i++)
+	{
+		if (i % 3 == 0 && i % 5 == 0)
+			fizz(2);
+		else if (i % 3 == 0)
+			fizz(0);
+		else if (i % 5 == 0)
+			fizz(1);
+		else if (i > 10)
+		{
+			putchar(i / 10 + '0');
+			putchar(i % 10 + '0');
+		}
+		else
+			putchar(i + '0');
+		putchar(' ');
+	}
+	putchar('\n');
+	return (0);
+}
