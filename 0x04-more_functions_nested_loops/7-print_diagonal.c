@@ -1,19 +1,6 @@
 #include "main.h"
 
 /**
- * space - function makes space
- * @n: takes int
-*/
-void space(int n)
-{
-	int i;
-	
-	for (i = 0; i < n; i++)
-	{
-		_putchar(' ');
-	}
-}
-/**
  * print_diagonal - prints n * dashes
  * @n: int paramater
  */
