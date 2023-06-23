@@ -2,14 +2,14 @@
 
 /**
  * space - function makes space
- * @n takes int
+ * @n: takes int
 */
 void space(int n)
 {
-  for(; n > 0; n--)
-    {
-      _putchar(' ');
-    }
+	for (; n > 0; n--)
+	{
+		_putchar(' ');
+	}
 }
 /**
  * print_diagonal - prints n * dashes
@@ -25,9 +25,9 @@ void print_diagonal(int n)
 
 		for (i = 1; i <= n; i++)
 		{
-		       space(i);
-		       _putchar('\\');
-		       _putchar('\n');
+			space(i);
+			_putchar('\\');
+			_putchar('\n');
 		}
 	}
 }
