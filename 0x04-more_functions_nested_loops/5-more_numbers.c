@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * uselesss - lessputcharuse
+ * useless - lessputcharuse
  * @c: char param
  */
 void useless(int c)
