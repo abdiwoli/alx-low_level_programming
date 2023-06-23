@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * print_line - prints n * dashes
+ * print_diagonal - prints n * dashes
  * @n: int paramater
  */
-void print_line(int n)
+void print_diagonal(int n)
 {
 	if (n <= 0)
 		_putchar('\n');
@@ -13,10 +13,10 @@ void print_line(int n)
 
 		for (i = 1; i <= n; i++)
 		{
-			if (i < n)
-				_putchar(' ');
+			if (i == n)
+				_putchar('\\');
 			else
-				_putchar('\');
+				_putchar(' ');
 		}
 		_putchar('\n');
 	}
