@@ -6,7 +6,7 @@
 */
 void space(int n)
 {
-	for (; n > 0; n--)
+	for (; n >= 0; n--)
 	{
 		_putchar(' ');
 	}
