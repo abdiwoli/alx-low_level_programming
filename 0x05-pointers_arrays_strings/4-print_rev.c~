@@ -1,0 +1,21 @@
+# include "main.h"
+/**
+ * _puts -  prints string of the param
+ * @str: string pram
+ *
+ */
+void print_rev(char *s)
+{
+	char *st;
+	
+	st = s;
+	while (*s != '\0')
+		s++;
+	s--;
+	while (s >= st)
+	{
+		_putchar(*s);
+		s--;
+	_putchar('\n');
+}
+
