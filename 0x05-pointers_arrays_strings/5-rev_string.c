@@ -4,6 +4,7 @@
 /**
  * abdi - gets lenstr
  *@s: string param
+ * Return: int value
  */
 
 int abdi(char *s)
@@ -27,6 +28,6 @@ void rev_string(char *s)
 
 	i = abdi(s);
 	while (i >= 0)
-		putchar(s[--i]);
+		printf("%c", s[--i]);
 	putchar('\n');
 }
