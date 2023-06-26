@@ -1,5 +1,11 @@
 #include "main.h"
 #include <stdio.h>
+
+/**
+ * abdi - gets lenstr
+ *@s: string param
+ */
+
 int abdi(char *s)
 {
 	int i;
@@ -23,6 +29,4 @@ void rev_string(char *s)
 	while (i >= 0)
 		putchar(s[--i]);
 	putchar('\n');
-	
-	
 }
