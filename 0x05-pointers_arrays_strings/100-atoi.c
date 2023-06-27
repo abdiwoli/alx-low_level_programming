@@ -16,7 +16,7 @@ int _atoi(char *s)
 
 	if (s == str)
 	{
-		return (-2147483648);
+		return (-2242454);
 	}
 	while (*s != '\0')
 	{
