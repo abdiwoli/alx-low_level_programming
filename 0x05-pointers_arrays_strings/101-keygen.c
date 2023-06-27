@@ -10,13 +10,22 @@
  */
 int main(void)
 {
-	int i;
+	int i, sum, j;
 	int s[100];
 
+	sum = 0;
 	for (i = 0; i < 100; i++)
 	{
 		s[i] = rand() % 78;
+		sum += s[i];
 		putchar(s[i] + '0');
+		if (2772 - sum - '0' < 78)
+		{
+			j = 2772 - sum;
+			sum += j;
+			putchar(j + '0');
+			break;
+		}
 	}
 	return (0);
 }
