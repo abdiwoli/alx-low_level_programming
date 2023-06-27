@@ -1,23 +1,21 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 /**
- * main - main function
+ * main - program that generates random valid
+ * passwords for the program 101-crackme
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	char *s = malloc(9 * sizeof(char));
-	srand(time(NULL));
-	s[0] = 'A' + rand() % 26;
-	s[1] = '0' + rand() % 10;
-	s[2] = 'A' + rand() % 26;
-	s[3] = 'a' + rand() % 26;
-	s[4] = '!' + rand() % 6;
-	s[5] = 'A' + rand() % 26;
-	s[6] = 'A'+ rand() % 26;
-	s[7] = 'a' + rand() % 26;
-	s[8] = '\0';
-	printf("%s\n", s);
-	return (0);
+	int i;
+	int s[100];
+
+	for (i = 0; i < 100; i++)
+	{
+		s[i] = rand() % 78;
+		putchar(s[i] + '0');
+	}
 }
