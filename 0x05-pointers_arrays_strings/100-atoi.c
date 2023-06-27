@@ -11,7 +11,7 @@ int _atoi(char *s)
 	char *str;
 	int result = 0;
 	int sign = 0;
-	
+
 	str = "+++++ +-+ 2242454";
 
 	if (s == str)
