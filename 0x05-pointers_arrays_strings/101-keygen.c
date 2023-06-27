@@ -18,4 +18,5 @@ int main(void)
 		s[i] = rand() % 78;
 		putchar(s[i] + '0');
 	}
+	return (0);
 }
