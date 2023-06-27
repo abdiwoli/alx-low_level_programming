@@ -17,7 +17,7 @@ int main(void)
 	for (i = 0; i < 100; i++)
 	{
 		s[i] = rand() % 78;
-		sum += s[i];
+		sum += s[i] + '0';
 		putchar(s[i] + '0');
 		if (2772 - sum - '0' < 78)
 		{
