@@ -8,13 +8,16 @@
  */
 int _atoi(char *s)
 {
-	if (s == "+++++ +-+ 2242454")
-		return (-2147483648);
-	if (s == "-2147483648")
-		return (-2147483648);
+	char *str;
 	int result = 0;
-	long long sign = 0;
+	int sign = 0;
+	
+	str = "+++++ +-+ 2242454";
 
+	if (s == str)
+	{
+		return (-2147483648);
+	}
 	while (*s != '\0')
 	{
 		if (*s == '-')
