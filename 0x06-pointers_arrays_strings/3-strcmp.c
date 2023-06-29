@@ -5,7 +5,7 @@
  * @str2: second pare
  * Return: int;
  */
-int strcmp(const char *str1, const char *str2)
+int _strcmp(char *str1, char *str2)
 {
 	while (*str1 && (*str1 == *str2))
 	{
