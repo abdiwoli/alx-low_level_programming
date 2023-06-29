@@ -1,2 +1,1 @@
-# alx-low_level_programming
-the repo is and Alx-software engineering project 
+README me for 0x06-pointers_arrays_strings
