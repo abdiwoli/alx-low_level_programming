@@ -1,11 +1,11 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
  * print_number - prints digit
  * @n: int param
  */
-
 void print_number(int n)
 {
 	int count = 0;
@@ -13,10 +13,10 @@ void print_number(int n)
 	char *s, dash;
 
 	dash = '-';
+	sign = n;
 	if (n < 0)
 	{
 		n *= -1;
-		sign = -1;
 	}
 	f = n;
 	if (n > 0)
