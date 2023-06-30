@@ -7,6 +7,7 @@
 char *cap_string(char *s)
 {
 	char *tmp = s;
+	char t;
 	int capitalize_next = 1;
 
 	while (*tmp != '\0')
@@ -17,8 +18,9 @@ char *cap_string(char *s)
 		}
 
 		capitalize_next = 0;
-
-		if (*tmp == ' ' || *tmp == '\t' || *tmp == '\n' || *tmp == '.' || *tmp == ',' || *tmp == '!' || *tmp == '?')
+		t = *tmp;
+		if (*t == ' ' || *t == '\t' || *t == '\n' || *t == '.' || *t == ',' ||
+		    *t == '!' || *t == '?')
 		{
 			capitalize_next = 1;
 		}
