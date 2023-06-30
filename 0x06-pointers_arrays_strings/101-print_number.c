@@ -9,8 +9,9 @@ void print_number(int n)
 {
 	int count = 0;
 	int i, number, f, sign;
-	char *s;
+	char *s, dash;
 
+	dash = '-';
 	if (n < 0)
 	{
 		n *= -1;
@@ -33,7 +34,7 @@ void print_number(int n)
 			n /= 10;
 		}
 		if (sign < 0)
-			_putchar('-');
+			_putchar(dash);
 		for (i = 0; i < number; i++)
 		{
 			_putchar(s[i]);
