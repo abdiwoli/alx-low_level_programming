@@ -19,8 +19,8 @@ char *cap_string(char *s)
 
 		capitalize_next = 0;
 		t = *tmp;
-		if (*t == ' ' || *t == '\t' || *t == '\n' || *t == '.' || *t == ',' ||
-		    *t == '!' || *t == '?')
+		if (t == ' ' || t == '\t' || t == '\n' || t == '.' || t == ',' ||
+		    t == '!' || t == '?')
 		{
 			capitalize_next = 1;
 		}
