@@ -26,6 +26,7 @@ char *leet(char *s)
 		{
 			if (dictionary[i].letter == *s)
 				*s = dictionary[i].value + '0';
+			break;
 		}
 		s++;
 	}
