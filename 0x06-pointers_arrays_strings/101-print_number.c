@@ -3,6 +3,7 @@
 #include <stdlib.h>
 /**
  * print_number - prints digit
+ * @n: int param
  */
 
 void print_number(int n)
