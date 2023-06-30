@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * strcmp -compare two strings
+ * _strcmp -compare two strings
  * @str1: first string
  * @str2: second pare
  * Return: int;
