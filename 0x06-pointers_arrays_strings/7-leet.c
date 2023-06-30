@@ -25,8 +25,10 @@ char *leet(char *s)
 		for (i = 0; i < 9; i++)
 		{
 			if (dictionary[i].letter == *s)
+			{
 				*s = dictionary[i].value + '0';
-			break;
+				break;
+			}
 		}
 		s++;
 	}
