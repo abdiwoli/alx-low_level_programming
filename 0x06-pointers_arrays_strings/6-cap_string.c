@@ -22,13 +22,6 @@ char *cap_string(char *s)
 		{
 			capitalize_next = 1;
 		}
-
-		if (*tmp == '\t')
-		{
-			*tmp = ' ';
-			capitalize_next = 1;
-		}
-
 		tmp++;
 	}
 
