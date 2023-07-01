@@ -40,8 +40,8 @@ void print_number(int n)
 		{
 			_putchar(s[i]);
 		}
+		free(s);
 	}
 	else
 		_putchar(n + '0');
-	free(s);
 }
