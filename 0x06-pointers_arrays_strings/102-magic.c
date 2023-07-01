@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
  * main - teachin fun
+ * Return: 0;
  */
 
 int main(void)
