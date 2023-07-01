@@ -1,4 +1,7 @@
 #include <stdio.h>
+/**
+ * main - teachin fun
+ */
 
 int main(void)
 {
