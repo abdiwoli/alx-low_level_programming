@@ -8,11 +8,11 @@ int main(void)
 {
 	int next = 1;
 	int prev = 0;
-	int temp;
+	int temp, i;
 
 	char *c = ", ";
 
-	for (int i = 1; i < 50; i++)
+	for (i = 1; i < 50; i++)
 	{
 		if (i == 49)
 			c = "\n";
