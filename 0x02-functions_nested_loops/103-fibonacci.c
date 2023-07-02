@@ -9,10 +9,9 @@ int main(void)
 	unsigned long next = 1;
 	unsigned long prev = 0;
 	unsigned long temp, sum;
-	int i;
 
 	sum = 0;
-	for (i = 1; i <= 50; i++)
+	while (next <= 4000000)
 	{
 		temp = next;
 		next = next + prev;
