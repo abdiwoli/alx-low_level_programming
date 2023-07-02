@@ -6,9 +6,10 @@
 
 int main(void)
 {
-	int next = 1;
-	int prev = 0;
-	int temp, i;
+	unsigned long long next = 1;
+	unsigned long long prev = 0;
+	unsigned long long temp;
+	int i;
 
 	char *c = ", ";
 
@@ -18,7 +19,7 @@ int main(void)
 			c = "\n";
 		temp = next;
 		next = next + prev;
-		printf("%d%s", next, c);
+		printf("%llu%s", next, c);
 		prev = temp;
 	}
 
