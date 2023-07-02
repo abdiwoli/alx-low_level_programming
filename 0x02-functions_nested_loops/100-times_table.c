@@ -11,7 +11,7 @@ void spaceComa(char a, char b, char c)
 {
 	putchar(a);
 	putchar(b);
-	c == '0' ? (c = '1')  : putchar(c);
+	c == '1' ? (c = '2')  : putchar(c);
 }
 
 /**
@@ -33,7 +33,7 @@ void print_times_table(int num)
 			putchar('\n');
 			break;
 		}
-		spaceComa(',', ' ', '0');
+		spaceComa(',', ' ', '1');
 		for (n = 1; n <= num; n++)
 		{
 			n2 = (n * i);
@@ -55,7 +55,7 @@ void print_times_table(int num)
 			else
 				spaceComa(' ', ' ', n2 + '0');
 			if (n != num)
-				spaceComa(',', ' ', '0');
+				spaceComa(',', ' ', '1');
 		}
 		putchar('\n');
 	}
