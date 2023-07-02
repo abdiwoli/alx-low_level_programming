@@ -8,8 +8,8 @@ int main(void)
 
 	char *c = ", ";
 
-	mpz_init_set_ui(next, 1);
-	mpz_init_set_ui(prev, 0);
+	mpz_set_ui(next, 1);
+	mpz_set_ui(prev, 0);
 	mpz_init(temp);
 
 	for (i = 1; i <= 98; i++)
