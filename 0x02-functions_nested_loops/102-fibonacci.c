@@ -13,9 +13,9 @@ int main(void)
 
 	char *c = ", ";
 
-	for (i = 1; i < 50; i++)
+	for (i = 1; i <= 50; i++)
 	{
-		if (i == 49)
+		if (i == 50)
 			c = "\n";
 		temp = next;
 		next = next + prev;
