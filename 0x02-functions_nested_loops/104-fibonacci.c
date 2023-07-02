@@ -1,27 +1,32 @@
 #include <stdio.h>
-/**
- * main - main fun
- * Return: 0
- */
+#include <gmp.h>
 
 int main(void)
 {
-	unsigned long next = 1;
-	unsigned long prev = 0;
-	unsigned long temp;
+	mpz_t next, prev, temp;
 	int i;
 
 	char *c = ", ";
+
+	mpz_init_set_ui(next, 1);
+	mpz_init_set_ui(prev, 0);
+	mpz_init(temp);
 
 	for (i = 1; i <= 98; i++)
 	{
 		if (i == 98)
 			c = "\n";
-		temp = next;
-		next = next + prev;
-		printf("%lu%s", next, c);
-		prev = temp;
+
+		mpz_add(temp, next, prev);
+		gmp_printf("%Zd%s", temp, c);
+
+		mpz_set(prev, next);
+		mpz_set(next, temp);
 	}
 
-	return (0);
+	mpz_clear(next);
+	mpz_clear(prev);
+	mpz_clear(temp);
+
+	return 0;
 }
