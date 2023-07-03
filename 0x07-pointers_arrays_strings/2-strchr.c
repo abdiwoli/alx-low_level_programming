@@ -17,7 +17,7 @@ char *_strchr(char *s, char c)
 	char *p = pp;
 	char f;
 
-	for (i = 0; i < sizeof(s); i++)
+	for (i = 0; i < strlen(s); i++)
 	{
 		f = *s++;
 		if (f == c)
