@@ -12,23 +12,12 @@
 char *_strchr(char *s, char c)
 {
 	unsigned long int i;
-	int n = 0;
-	char *pp = malloc(sizeof(char) * (strlen(s) + 1));
-	char *p = pp;
-	char f;
 
-	for (i = 0; i < strlen(s); i++)
+	for(i = 0; i < strlen(s); i++)
 	{
-		f = *s++;
-		if (f == c)
-			n = 1;
-		if (n == 1)
-			*p++ = f;
+		if (*s == c)
+			return s;
+		s++;
 	}
-	if (n == 0)
-	{
-		p = NULL;
-		return (p);
-	}
-	return (pp);
+	return (NULL);
 }
