@@ -26,6 +26,9 @@ char *_strchr(char *s, char c)
 			*p++ = f;
 	}
 	if (n == 0)
-		pp = NULL;
+	{
+		p = NULL;
+		return (p);
+	}
 	return (pp);
 }
