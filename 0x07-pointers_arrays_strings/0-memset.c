@@ -4,6 +4,7 @@
  * @s: the pointer to fill
  * @b: the value to fill
  * @n: the size
+ * Return: return pointer s
  */
 char *_memset(char *s, char b, unsigned int n)
 {
@@ -14,5 +15,5 @@ for (i = 0; i < n; i++)
 {
 *p++ = b;
 }
-return (s);  
+return (s);
 }
