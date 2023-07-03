@@ -1,0 +1,28 @@
+#include "main.h"
+#include <string.h>
+#include <stdlib.h>
+/**
+ * _strpbrk - function that searches strings 
+ * @s: the string or source
+ * @accept: the string to search
+ * Return : returns pointer
+ */
+
+char *_strpbrk(char *s, char *accept)
+{
+	char *p = malloc(sizeof(char) * (strlen(s) + 1));
+
+	while (*s != '\0')
+	{
+		if (strlen(p) < strlen(accept))
+		{
+			*p = *s;
+			p++;
+		}
+		else
+			char *p = malloc(sizeof(char) * (strlen(s) + 1));
+		s++;
+				
+	}
+	return (p == accept ? (p) : NULL);
+}
