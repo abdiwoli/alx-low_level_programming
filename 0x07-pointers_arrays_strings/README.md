@@ -1,0 +1,1 @@
+0x07-pointers_arrays_strings is directory that is part of alx low level programming repository. 
