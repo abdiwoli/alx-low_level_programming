@@ -25,5 +25,7 @@ char *_strchr(char *s, char c)
 		if (n == 1)
 			*p++ = f;
 	}
+	if (n == 0)
+		pp = NULL;
 	return (pp);
 }
