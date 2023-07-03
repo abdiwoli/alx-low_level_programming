@@ -5,7 +5,7 @@
  * _strstr - function that searches strings
  * @haystack: the string or source
  * @needle: the string to search
- * Return : returns pointer
+ * Return: returns pointer
  */
 char *_strstr(char *haystack, char *needle)
 {
