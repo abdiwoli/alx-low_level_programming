@@ -5,7 +5,7 @@
  * _strpbrk - function that searches strings
  * @s: the string or source
  * @f: the string to search
- * Return : returns pointer
+ * Return: returns pointer
  */
 char *_strpbrk(char *s, char *f)
 {
