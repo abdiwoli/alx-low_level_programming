@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- * _strstr - function that searches strings
+ * _strstr - function that searches substrings
  * @haystack: the string or source
  * @needle: the string to search
  * Return: returns pointer
@@ -12,6 +12,8 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i, j;
 
+	if (strlen(needle) == 0)
+		return (needle);
 	i = 0;
 	while (*(needle + i) != '\0')
 	{
