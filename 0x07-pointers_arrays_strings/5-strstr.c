@@ -1,6 +1,7 @@
 #include "main.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * _strstr - function that searches strings
  * @haystack: the string or source
@@ -9,7 +10,19 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	char *p = strstr(haystack, needle);
+	int i, j;
 
-	return ((p != NULL) ? p : NULL);
+	i = 0;
+	while (*(needle + i) != '\0')
+	{
+		j = 0;
+		while (*(haystack + j) != '\0')
+		{
+			if (*(needle + i) == *(haystack + j))
+				return ((haystack + j));
+			j++;
+		}
+		i++;
+	}
+	return (NULL);
 }
