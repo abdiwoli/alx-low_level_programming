@@ -12,7 +12,7 @@ void recursion_help(char *s)
 		recursion_help(s);
 	}
 	else
-		_putchar('\n');
+		_putchar(*s);
 }
 /**
  * _print_rev_recursion - string in reverse
