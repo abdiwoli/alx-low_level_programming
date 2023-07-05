@@ -21,8 +21,14 @@ void recursion_help(char *s)
 
 void  _print_rev_recursion(char *s)
 {
-	while (*s != '\0')
+	if (*s != '\0')
+	{
 		s++;
-	s--;
-	recursion_help(s);
+		_print_rev_recursion(s);
+	}
+	else
+	{
+		s--;
+		recursion_help(s);
+	}
 }
