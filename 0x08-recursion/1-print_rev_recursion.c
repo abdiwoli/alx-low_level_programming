@@ -5,7 +5,7 @@
  */
 void recursion_help(char *s)
 {
-	if (*s != '\0')
+	if (*s != '\0' && *s != '\n')
 	{
 		_putchar(*s);
 		s--;
