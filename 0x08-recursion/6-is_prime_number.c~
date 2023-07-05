@@ -1,0 +1,21 @@
+#include "main.h"
+/**
+ *  is_prime_number - function to get prime
+ * @n: int number to check
+ * @i: divisor param
+ * Return: return 1 or 0
+ */
+
+int is_prime_number(int n)
+{
+	static int i = 2;
+
+	if (n < 2)
+		return (0);
+	else if (i * i > n)
+		return (1);
+	else if (n % i == 0)
+		return (0);
+	i++;
+	return (is_prime_number(n));
+}
