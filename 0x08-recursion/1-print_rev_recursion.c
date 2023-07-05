@@ -1,34 +1,13 @@
 #include "main.h"
 /**
- * recursion_help - recursive function helps to print
- * @s: string to print
+ * _print_rev_recursion - prints revers string
+ * @s: string
  */
-void recursion_help(char *s)
+void _print_rev_recursion(char *s)
 {
-	if (*s != '\0' && *s != '\n')
+	if (*s)
 	{
+		_print_rev_recursion(s + 1);
 		_putchar(*s);
-		s--;
-		recursion_help(s);
-	}
-	else
-		_putchar(*s);
-}
-/**
- * _print_rev_recursion - string in reverse
- * @s: the string to print
- */
-
-void  _print_rev_recursion(char *s)
-{
-	if (*s != '\0')
-	{
-		s++;
-		_print_rev_recursion(s);
-	}
-	else
-	{
-		s--;
-		recursion_help(s);
 	}
 }
