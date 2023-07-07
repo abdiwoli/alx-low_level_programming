@@ -29,5 +29,6 @@ void _puts_recursion(char *s)
 int main(int argc, char **argv)
 {
 	_puts_recursion(*argv);
-	return (argc);
+	argc++;
+	return (0);
 }
