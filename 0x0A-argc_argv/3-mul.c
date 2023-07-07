@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 		int num1 = strtol(argv[2], &endptr1, 10);
 
 		if (num)
-			printf("%d\n", num + num1);
+			printf("%d\n", num * num1);
 		else
 			printf("%d\n", num1);
 	}
