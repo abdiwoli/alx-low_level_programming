@@ -19,8 +19,6 @@ int main(int argc, char **argv)
 
 		if (num)
 			printf("%d\n", num * num1);
-		else
-			printf("%d\n", num1);
 	}
 	else
 		printf("Error\n");
