@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-/** 
+/**
  * main - function prints all arguments
  * @argc: int the size of the array
  * @argv: the array
