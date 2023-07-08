@@ -3,25 +3,47 @@
  * main - main fun
  * Return: 0
  */
+#include <stdio.h>
+#include <stdio.h>
 
-int main(void)
-{
+int main(void) {
 	unsigned long next = 1;
 	unsigned long prev = 0;
 	unsigned long temp;
+	unsigned long n1_h1, n1_h2, n2_h1, n2_h2;
 	int i;
 
 	char *c = ", ";
 
-	for (i = 1; i <= 98; i++)
-	{
-		if (i == 98)
-			c = "\n";
+	for (i = 1; i <= 92; i++) {
 		temp = next;
-		next = next + prev;
+		next += prev;
 		printf("%lu%s", next, c);
 		prev = temp;
 	}
 
-	return (0);
+	n1_h1 = prev / 10000000000;
+	n1_h2 = prev % 10000000000;
+	n2_h1 = next / 10000000000;
+	n2_h2 = next % 10000000000;
+
+	for (; i < 99; i++) {
+		unsigned long h1 = n1_h1 + n2_h1;
+		unsigned long h2 = n1_h2 + n2_h2;
+
+		if (h2 > 9999999999) {
+			h1 += 1;
+			h2 %= 10000000000;
+		}
+
+		printf("%lu%010lu%s", h1, h2, (i != 98) ? c : "\n");
+
+		n1_h1 = n2_h1;
+		n1_h2 = n2_h2;
+		n2_h1 = h1;
+		n2_h2 = h2;
+	}
+
+	return 0;
 }
+
