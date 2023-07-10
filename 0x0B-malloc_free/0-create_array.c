@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * create_array - function that alowcates memry for array
  * @size: the size of the memory
