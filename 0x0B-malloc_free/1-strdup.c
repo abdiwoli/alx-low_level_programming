@@ -10,8 +10,12 @@
 
 char *_strdup(char *str)
 {
-	char *ptr = malloc(sizeof(char) * strlen(str));
+	if (str != NULL)
+	{
+		char *ptr = malloc(sizeof(char) * strlen(str));
 
-	strcpy(ptr, str);
-	return (strlen(str) > 0 ? ptr : NULL);
+		strcpy(ptr, str);
+		return (strlen(str) > 0 ? ptr : NULL);
+	}
+	return (NULL);
 }
