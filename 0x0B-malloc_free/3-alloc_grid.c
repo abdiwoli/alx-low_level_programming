@@ -3,10 +3,10 @@
 #include <stdlib.h>
 
 /**
- * alloc_grid - function that returns pointer to wto demonistion array
- * @width: the width od the array
- * @height: the height
- * Return: array
+ * alloc_grid - function that returns pointer to a two-dimensional array
+ * @width: the width of the array
+ * @height: the height of the array
+ * Return: pointer to the array
  */
 int **alloc_grid(int width, int height)
 {
@@ -19,14 +19,18 @@ int **alloc_grid(int width, int height)
 	ptr = malloc(sizeof(int *) * width);
 	if (ptr == NULL)
 		return (NULL);
+
 	for (i = 0; i < width; i++)
 	{
-		ptr[i] = malloc(sizeof(int *) * height);
+		ptr[i] = malloc(sizeof(int) * height);
 		if (ptr[i] == NULL)
 		{
+			for (j = 0; j < i; j++)
+				free(ptr[j]);
 			free(ptr);
 			return (NULL);
 		}
+
 		for (j = 0; j < height; j++)
 			ptr[i][j] = 0;
 	}
