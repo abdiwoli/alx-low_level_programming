@@ -65,7 +65,7 @@ char **strtow(char *s)
 	char **array = malloc(sizeof(char *) * strlen(s) + 1);
 	int i = 0;
 
-	if (s == NULL || (*s == ' ' && strlen(s) == 1) || strcmp(s, "") == 0)
+	if (s == NULL || (strcmp(s, " ") == 0 && strlen(s) == 1) || strcmp(s, "") == 0)
 		return (NULL);
 
 	while (*s)
