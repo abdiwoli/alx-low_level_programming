@@ -41,7 +41,7 @@ char *word(char *s)
 	{
 		if (*s != ' ')
 			f = 1;
-		if (*s == ' ' && f == 1)
+		else if (*s == ' ' && f == 1)
 			break;
 		if (*s != ' ')
 		{
@@ -66,7 +66,7 @@ char **strtow(char *s)
 
 	if ((strlen(s) == strspn(s, " ") && strlen(s) != 0) || *s == '\0')
 		return (NULL);
-	array = malloc(sizeof(char *) * (strlen(s) + 1));
+	array = malloc(sizeof(char *) * (lenword(s) + 1));
 	if (array == NULL)
 		return (NULL);
 
