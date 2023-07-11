@@ -1,7 +1,9 @@
-#include "main.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+
 /**
  * lenword - function gettes the len of each word
  * @s: the string
@@ -57,13 +59,15 @@ char *word(char *s)
  * @s: string
  * Return: array
  */
+
 char **strtow(char *s)
 {
 	char **array = malloc(sizeof(char *) * strlen(s) + 1);
 	int i = 0;
 
-	if (s == NULL || (*s == ' ' && strlen(s) == 1))
+	if (s == NULL || (*s == ' ' && strlen(s) == 1) || strcmp(s, "") == 0)
 		return (NULL);
+
 	while (*s)
 	{
 		char *w = word(s);
@@ -72,6 +76,8 @@ char **strtow(char *s)
 		s += lenword(s);
 		i++;
 	}
+	if (strcmp(array[i - 1], " ") == 0)
+		i--;
 	array[i] = NULL;
 
 	return (array);
