@@ -62,6 +62,8 @@ char **strtow(char *s)
 	char **array = malloc(sizeof(char *) * strlen(s) + 1);
 	int i = 0;
 
+	if (s == NULL || (*s == ' ' && strlen(s) == 1))
+		return (NULL);
 	while (*s)
 	{
 		char *w = word(s);
