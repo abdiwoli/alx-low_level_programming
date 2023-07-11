@@ -64,18 +64,18 @@ char **strtow(char *s)
 	char **array;
 	int i = 0, word_count = 0;
 
-	if (s == NULL || (strlen(s) == strspn(s, " ") && strlen(s) != 0) || *s == '\0')
-		return NULL;
-
+	if ((strlen(s) == strspn(s, " ") && strlen(s) != 0) || *s == '\0')
+		return (NULL);
 	array = malloc(sizeof(char *) * (strlen(s) + 1));
 	if (array == NULL)
-		return NULL;
+		return (NULL);
 
 	while (*s)
 	{
 		if (*s != ' ')
 		{
 			char *w = word(s);
+
 			array[i] = w;
 			s += lenword(s);
 			i++;
