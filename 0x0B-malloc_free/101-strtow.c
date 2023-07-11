@@ -66,7 +66,7 @@ char **strtow(char *s)
 
 	if ((strcmp(s, " ") == 0 && strlen(s) == 1) || strcmp(s, "") == 0)
 		return (NULL);
-	if (strcmp(s, "  ") == 0)
+	if (strcmp(s, "  ") == 0 || strcmp(s, " ") == 0)
 		return (NULL);
 
 	while (*s)
