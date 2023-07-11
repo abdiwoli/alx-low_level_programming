@@ -70,7 +70,7 @@ char **strtow(char *s)
 		s += lenword(s);
 		i++;
 	}
-	array[i - 1] = NULL;
+	array[i] = NULL;
 
 	return (array);
 }
