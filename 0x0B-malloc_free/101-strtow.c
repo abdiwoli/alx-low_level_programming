@@ -34,7 +34,7 @@ int lenword(char *s)
 char *word(char *s)
 {
 	int f = 0;
-	char *sc = malloc(sizeof(char) * lenword(s) + 1);
+	char *sc = malloc(sizeof(char) * (lenword(s) + 1));
 	char *st = sc;
 
 	while (*s)
