@@ -62,7 +62,7 @@ char *word(char *s)
 char **strtow(char *s)
 {
 	char **array;
-	int i = 0, word_count = 0;
+	int i = 0;
 
 	if ((strlen(s) == strspn(s, " ") && strlen(s) != 0) || *s == '\0')
 		return (NULL);
@@ -79,14 +79,13 @@ char **strtow(char *s)
 			array[i] = w;
 			s += lenword(s);
 			i++;
-			word_count++;
 		}
 		else
 		{
 			s++;
 		}
 	}
-	array[word_count] = NULL;
+	array[i] = NULL;
 
 	return (array);
 }
