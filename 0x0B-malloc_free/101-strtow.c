@@ -65,18 +65,23 @@ char **strtow(char *s)
 	char **array = malloc(sizeof(char *) * strlen(s) + 1);
 	int i = 0;
 
-	if (s == NULL || *s == '\0')
-		return (NULL);
+	if (s == NULL || (strcmp(s, " ") == 0 && strlen(s) == 1))
+	    return (NULL);
 
 	while (*s)
 	{
 		char *w = word(s);
 
-		array[i] = w;
+		if (w != NULL)
+		{
+			array[i] = w;
+			i++;
+		}
 		s += lenword(s);
-		i++;
+		if (strcmp(s, " ") == 1 && *(s + 1) == '\0')
+			break;
 	}
-	if (strcmp(array[i - 1], " ") == 0)
+	if (strcmp(array[i - 1], " ") == 1)
 		i--;
 	array[i] = NULL;
 
