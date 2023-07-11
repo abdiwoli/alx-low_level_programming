@@ -61,30 +61,32 @@ char *word(char *s)
  */
 char **strtow(char *s)
 {
-	char **array = malloc(sizeof(char *) * (strlen(s) + 1));
-	int i = 0;
+	char **array;
+	int i = 0, word_count = 0;
 
-	if ((strcmp(s, " ") == 0 && strlen(s) == 1) || strcmp(s, "") == 0)
-		return (NULL);
-	if (strcmp(s, "  ") == 0 || strcmp(s, " ") == 0)
-		return (NULL);
+	if (s == NULL || (strlen(s) == strspn(s, " ") && strlen(s) != 0) || *s == '\0')
+		return NULL;
+
+	array = malloc(sizeof(char *) * (strlen(s) + 1));
+	if (array == NULL)
+		return NULL;
 
 	while (*s)
 	{
 		if (*s != ' ')
 		{
 			char *w = word(s);
-
 			array[i] = w;
 			s += lenword(s);
 			i++;
+			word_count++;
 		}
 		else
 		{
 			s++;
 		}
 	}
-	array[i] = NULL;
+	array[word_count] = NULL;
+
 	return (array);
 }
-
