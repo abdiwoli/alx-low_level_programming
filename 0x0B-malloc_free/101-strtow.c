@@ -59,30 +59,27 @@ char *word(char *s)
  * @s: string
  * Return: array
  */
-
 char **strtow(char *s)
 {
 	char **array = malloc(sizeof(char *) * strlen(s) + 1);
 	int i = 0;
 
-	if (s == NULL || (strcmp(s, " ") == 0 && strlen(s) == 1) || *s == '\0')
-	    return (NULL);
+	if (s == NULL || strlen(s) <= 1 || strcmp(s, "") == 0)
+		return (NULL);
 
 	while (*s)
 	{
-		char *w = word(s);
-
-		if (w != NULL)
+		if (*s != ' ')
 		{
+			char *w = word(s);
+
 			array[i] = w;
+			s += lenword(s);
 			i++;
 		}
-		s += lenword(s);
-		if (strcmp(s, " ") == 1 && *(s + 1) == '\0')
-			break;
+		s++;
 	}
-	if (strcmp(array[i - 1], " ") == 1)
-		i--;
+
 	array[i] = NULL;
 
 	return (array);
