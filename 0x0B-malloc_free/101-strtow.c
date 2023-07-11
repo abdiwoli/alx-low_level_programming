@@ -18,7 +18,7 @@ int lenword(char *s)
 	{
 		if (*s != ' ')
 			f = 1;
-		if (*s == ' ' && f == 1)
+		else if (*s == ' ' && f == 1)
 			break;
 		s++;
 		n++;
@@ -41,7 +41,7 @@ char *word(char *s)
 	{
 		if (*s != ' ')
 			f = 1;
-		if (*s == ' ' && f == 1)
+		else if (*s == ' ' && f == 1)
 			break;
 		if (*s != ' ')
 		{
