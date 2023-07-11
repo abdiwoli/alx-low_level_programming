@@ -61,10 +61,10 @@ char *word(char *s)
  */
 char **strtow(char *s)
 {
-	char **array = malloc(sizeof(char *) * strlen(s) + 1);
+	char **array = malloc(sizeof(char *) * (strlen(s) + 1));
 	int i = 0;
 
-	if (s == NULL || strlen(s) <= 1 || strcmp(s, "") == 0)
+	if ((strcmp(s, " ") == 0 && strlen(s) == 1) || strcmp(s, "") == 0)
 		return (NULL);
 
 	while (*s)
@@ -77,10 +77,12 @@ char **strtow(char *s)
 			s += lenword(s);
 			i++;
 		}
-		s++;
+		else
+		{
+			s++;
+		}
 	}
-
 	array[i] = NULL;
-
 	return (array);
 }
+
