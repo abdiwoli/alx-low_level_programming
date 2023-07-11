@@ -8,6 +8,7 @@
  * @s: the string
  * Return: int the len
  */
+
 int lenword(char *s)
 {
 	int f = 0;
@@ -65,7 +66,7 @@ char **strtow(char *s)
 
 	if ((strlen(s) == strspn(s, " ") && strlen(s) != 0) || *s == '\0')
 		return (NULL);
-	array = malloc(sizeof(char *) * (lenword(s) + 1 + 1));
+	array = malloc(sizeof(char *) * (lenword(s) + 1 + 2));
 	if (array == NULL)
 		return (NULL);
 
