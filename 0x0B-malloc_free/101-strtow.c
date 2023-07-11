@@ -66,7 +66,7 @@ char **strtow(char *s)
 
 	if ((strlen(s) == strspn(s, " ") && strlen(s) != 0) || *s == '\0')
 		return (NULL);
-	array = malloc(sizeof(char *) * (lenword(s) + 1 + 2));
+	array = malloc(sizeof(char *) * (lenword(s) + 1 + 2) + 1);
 	if (array == NULL)
 		return (NULL);
 
