@@ -16,7 +16,13 @@ char *_strdup(char *str)
 
 		if (ptr == NULL)
 			return (NULL);
-		strcpy(ptr, str);
+		while (*str)
+		{
+			*ptr = *str;
+			ptr++;
+			str++;
+		}
+		*ptr = '\0';
 		return (ptr);
 	}
 	return (NULL);
