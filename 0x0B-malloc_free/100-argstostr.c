@@ -30,12 +30,14 @@ void str_copy(char *dest, char *str)
 char *argstostr(int ac, char **av)
 {
 	char *ptr;
-	int len = 0;
+	int len = 0, len1 = 0, i;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
+	for (i = 0; i < ac; i++)
+		len1 += strlen(av[i]);
 
-	ptr = malloc(sizeof(char) * len + 1);
+	ptr = malloc(sizeof(char) * (len1 + 1));
 	while (len < ac)
 	{
 		str_copy(ptr, av[len]);
