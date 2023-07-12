@@ -3,6 +3,24 @@
 #include <stdlib.h>
 #include <string.h>
 /**
+ * str_copy - function appends text
+ * @dest: the destinaion to append
+ * @str: the str to append
+ */
+
+void str_copy(char *dest, char *str)
+{
+	while (*dest)
+		dest++;
+	while (*str)
+	{
+		*dest = *str;
+		dest++;
+		str++;
+	}
+	*dest = '\0';
+}
+/**
  * argstostr - conconates all arguments
  * @ac: int
  * @av:arguments
@@ -13,22 +31,16 @@ char *argstostr(int ac, char **av)
 {
 	char *ptr;
 	int len = 0;
-	int ln1 = ac;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	while (ac > 0)
-	{
-		ac--;
-		len += strlen(av[ac]) + 1;
-	}
+
 	ptr = malloc(sizeof(char) * len + 1);
-	ptr[0] = '\0';
-	while (ac < ln1)
+	while (len < ac)
 	{
-		strcat(ptr, av[ac]);
-		strcat(ptr, "\n");
-		ac++;
+		str_copy(ptr, av[len]);
+		str_copy(ptr, "\n");
+		len++;
 	}
 		return (ptr);
 }
