@@ -22,7 +22,7 @@ int **alloc_grid(int width, int height)
 
 		if (!ptr[rw])
 		{
-			while(--rw > -1)
+			while (--rw > -1)
 			{
 				free(ptr[rw]);
 			}
