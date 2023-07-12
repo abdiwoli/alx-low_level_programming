@@ -1,17 +1,15 @@
 #include "main.h"
 #include <stdlib.h>
-
-
 /**
- * free_grid - function free 2D array
+ * free_grid - function free allocated 2d array
  * @grid: the array
- * @height: the height
+ * @height: the height of array
  */
+
 void free_grid(int **grid, int height)
 {
-	while (height)
-		free(grid[--height]);
-	free(grid);
+	int i;
+
+	for (i = 0; i < height; i++)
+		free(grid[i]);
 }
-
-
