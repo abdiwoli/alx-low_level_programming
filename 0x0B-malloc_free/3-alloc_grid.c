@@ -2,38 +2,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * alloc_grid - function that returns pointer to a two-dimensional array
- * @width: the width of the array
+ * alloc_grid - function returns allocates memory for 2d
+ * @width: the width od the array
  * @height: the height of the array
- * Return: pointer to the array
+ * Return: 2d array
  */
 int **alloc_grid(int width, int height)
 {
-	int **matrix, row, column;
+	int **ptr, cl, rw;
 
 	if (width < 1 || height < 1)
 		return (NULL);
-
-	matrix = (int **) malloc(sizeof(int *) * height);
-
-	if (!matrix)
+	ptr = (int **) malloc(sizeof(int *) * height);
+	if (!ptr)
 		return (NULL);
-
-	for (row = 0; row < height; ++row)
+	for (rw = 0; rw < height; ++rw)
 	{
-		matrix[row] = (int *) malloc(sizeof(int) * width);
+		ptr[rw] = (int *) malloc(sizeof(int) * width);
 
-		if (!matrix[row])
+		if (!ptr[rw])
 		{
-			while (--row > -1)
-				free(matrix[row]);
-			free(matrix);
+			while (--rw >= 0)
+				free(ptr[rw]);
+			free(ptr);
 			return (NULL);
 		}
-
-		for (column = 0; column < width; ++column)
-			matrix[row][column] = 0;
+		for (cl = 0; cl < width; cl++)
+		{
+			ptr[rw][cl] = 0;
+		}
 	}
-
-	return (matrix);
+	return (ptr);
 }
