@@ -26,7 +26,7 @@ char *str_concat(char *s1, char *s2)
 {
 	int len1;
 	int len2;
-	char *ptr;
+	char *ptr, *copy_ptr;
 
 	if (s2 == NULL)
 		s2 = "";
@@ -36,10 +36,22 @@ char *str_concat(char *s1, char *s2)
 	len1 = get_str_len(s1);
 	len2 = get_str_len(s2);
 	ptr = malloc((len1 + len2) * sizeof(char) + 1);
-
+	copy_ptr = ptr;
 	if (ptr == NULL)
 		return (NULL);
-	strcpy(ptr, s1);
-	strcat(ptr, s2);
-	return (ptr);
+	while (*s1)
+	{
+		*ptr = *s1;
+		ptr++;
+		s1++;
+	}
+	while (*s2)
+	{
+		*ptr = *s2;
+		ptr++;
+		s2++;
+	}
+	*ptr = '\0';
+
+	return (copy_ptr);
 }
