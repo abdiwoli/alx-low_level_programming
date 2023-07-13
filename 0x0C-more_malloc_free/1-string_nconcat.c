@@ -28,18 +28,16 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	ptr = malloc(sizeof(char) * (len + 1));
 	copy_ptr = ptr;
-	for (size = 0; size < len; size++)
+	while (*s1)
 	{
-		if (*s1)
-		{
-			*ptr = *s1;
-			s1++;
-		}
-		else
-		{
-			*ptr = *s2;
-			s2++;
-		}
+		*ptr = *s1;
+		ptr++;
+		s1++;
+	}
+	for (size = 0; size < n; size++)
+	{
+		*ptr = *s2;
+		s2++;
 		ptr++;
 	}
 
