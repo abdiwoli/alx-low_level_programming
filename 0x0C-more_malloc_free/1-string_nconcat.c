@@ -12,11 +12,13 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
+	unsigned int size;
+	char *ptr, *copy_ptr;
+
 	if (n <= 0)
 		return (NULL);
-	unsigned int size;
-	char *ptr = malloc(sizeof(char) * (strlen(s1) + n + 1));
-	char *copy_ptr = ptr;
+	ptr = malloc(sizeof(char) * (strlen(s1) + n + 1));
+	copy_ptr = ptr;
 
 	if (!ptr)
 		return (NULL);
