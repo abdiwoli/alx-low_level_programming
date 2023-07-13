@@ -19,6 +19,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 	if (n > len)
 		n = len;
+	if (!s2)
+		return (s1);
 	ptr = malloc(sizeof(char) * (strlen(s1) + n + 1));
 	copy_ptr = ptr;
 
