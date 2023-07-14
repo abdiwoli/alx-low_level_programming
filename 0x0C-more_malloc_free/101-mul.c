@@ -20,7 +20,7 @@ int is_digit(char *s)
 /**
  * main - function multiplies two num
  * @argc: the size of array
- * argv: the array
+ * @argv: the array
  * Return: 0 for success
  */
 int main(int argc, char **argv)
@@ -30,8 +30,8 @@ int main(int argc, char **argv)
 
 	if (argc < 3)
 		exit(98);
-	num1 = is_digit(argv[1]) ? atoi(argv[1]) : 0;
-	num2 = is_digit(argv[2]) ? atoi(argv[2]) : 0;
+	num1 = is_digit(argv[1]) ? atoi(argv[1]) : 1;
+	num2 = is_digit(argv[2]) ? atoi(argv[2]) : 1;
 
 	printf("%lu\n", num1 * num2);
 	return (0);
