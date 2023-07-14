@@ -1,30 +1,38 @@
 #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <gmp.h>
+/**
+ * is_digit - function checks if string is digit
+ * @s: the string
+ * Return: return 0 or 1
+ */
+int is_digit(char *s)
+{
+	int i;
 
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+	}
+	return (1);
+}
+/**
+ * main - function multiplies two num
+ * @argc: the size of array
+ * argv: the array
+ * Return: 0 for success
+ */
 int main(int argc, char **argv)
 {
-	mpz_t num1, num2, result;
+	unsigned long num1;
+	unsigned long num2;
 
-	if (argc != 3) {
+	if (argc < 3)
 		exit(98);
-	}
+	num1 = is_digit(argv[1]) ? atoi(argv[1]) : 0;
+	num2 = is_digit(argv[2]) ? atoi(argv[2]) : 0;
 
-	mpz_init(num1);
-	mpz_init(num2);
-	mpz_init(result);
-
-	mpz_set_str(num1, argv[1], 10);
-	mpz_set_str(num2, argv[2], 10);
-	
-	mpz_mul(result, num1, num2);
-
-	mpz_out_str(stdout, 10, result);
-	printf("\n");
-
-	mpz_clear(num1);
-	mpz_clear(num2);
-	mpz_clear(result);
-
-	return 0;
+	printf("%lu\n", num1 * num2);
+	return (0);
 }
