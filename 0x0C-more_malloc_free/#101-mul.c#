@@ -30,13 +30,7 @@ int main(int argc, char **argv)
 
 	if (argc < 3)
 		exit(98);
-
-	if (!is_digit(argv[2]))
-		exit(98);
-	if (!is_digit(argv[1]))
-		exit(98);
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[2]);
+	if (!is_digit(argv
 	printf("%lu\n", num1 * num2);
 	return (0);
 }
