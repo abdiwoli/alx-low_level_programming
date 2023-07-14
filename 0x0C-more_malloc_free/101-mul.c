@@ -12,8 +12,8 @@ int main(int argc, char **argv)
 	int num1;
 	int num2;
 
-	if (argc < 2)
-		return (98);
+	if (argc < 3)
+		exit(98);
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[2]);
 
