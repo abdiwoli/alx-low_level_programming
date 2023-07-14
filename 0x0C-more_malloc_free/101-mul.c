@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <gmp.h>
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
+	mpz_t num1, num2, result;
+
 	if (argc != 3) {
 		exit(98);
 	}
 
-	mpz_t num1, num2, result;
 	mpz_init(num1);
 	mpz_init(num2);
 	mpz_init(result);
