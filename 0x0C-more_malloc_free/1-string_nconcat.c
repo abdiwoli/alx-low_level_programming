@@ -39,6 +39,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		ptr++;
 	}
 
-	ptr[len] = '\0';
+	*ptr = '\0';
 	return (copy_ptr);
 }
