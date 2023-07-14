@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
-char *_memcpy(char *dest, char *src, unsigned int n);
+char *cpy(char *dest, char *src, unsigned int n);
 
 /**
  * _realloc - allocates memory block using malloc and free
@@ -13,7 +13,6 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i;
 	char *new_ptr;
 
 	if (new_size == 0  && ptr != NULL)
@@ -32,11 +31,25 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		new_size = old_size;
 	if (!new_ptr)
 		return (NULL);
-	while (i < new_size)
-	{
-		*((char *)new_ptr + i) = *((char *)ptr + i);
-		i++;
-	}
+	new_ptr = cpy(new_ptr, ptr, new_size);
 	free(ptr);
 	return (new_ptr);
+}
+/**
+ * cpy - function copies part of data
+ * @dest: the destination
+ * @ptr: the source
+ *@n: the size to copy
+ * Return: new pointer
+ */
+char *cpy(char *dest, char *ptr, unsigned int n)
+{
+	unsigned int i = 0;
+
+	while (i < n)
+	{
+		*(dest + i) = *(ptr + i);
+		i++;
+	}
+	return (dest);
 }
