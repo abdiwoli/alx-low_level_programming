@@ -12,7 +12,7 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int size, len, len1, len2;
+	unsigned int size, len, len1;
 	char *ptr, *copy_ptr;
 
 	if (s1 == NULL)
@@ -20,7 +20,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 	len1 = strlen(s1);
-	len2 = strlen(s2);
 	len = n + len1;
 	if (len == 0)
 		return (NULL);
