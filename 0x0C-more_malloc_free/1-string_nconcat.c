@@ -12,7 +12,7 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int size, len, len1;
+	unsigned int size, len1;
 	char *ptr, *copy_ptr;
 
 	if (s1 == NULL)
@@ -20,13 +20,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 	len1 = strlen(s1);
-	len = n + len1;
-	if (len == 0)
-		return (NULL);
+
 	if (n > strlen(s2))
 		n = strlen(s2);
 
-	ptr = malloc(sizeof(char) * len + 1);
+	ptr = malloc(sizeof(char) * (len1 + n) + 1);
 	if (!ptr)
 		return (NULL);
 	copy_ptr = ptr;
