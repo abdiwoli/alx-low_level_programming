@@ -26,7 +26,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (len == 0)
 		return (NULL);
 
-	ptr = malloc(sizeof(char) * (len + 1));
+	ptr = malloc(sizeof(char) * len + 1);
 	copy_ptr = ptr;
 	while (*s1)
 	{
