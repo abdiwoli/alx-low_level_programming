@@ -11,6 +11,7 @@
  * @owner: the owner of the dog
  * Return: new dog details pointer
  */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dogy = malloc(sizeof(dog_t));
@@ -19,7 +20,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{
 		free(name);
 		free(owner);
-		return (NULL);
+		return NULL;
 	}
 
 	dogy->name = NULL;
@@ -33,7 +34,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		{
 			free(dogy);
 			free(owner);
-			return (NULL);
+			return NULL;
 		}
 	}
 
@@ -45,9 +46,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 			free(dogy->name);
 			free(dogy);
 			free(name);
-			return (NULL);
+			return NULL;
 		}
 	}
 
-	return (dogy);
+	return dogy;
 }
+
