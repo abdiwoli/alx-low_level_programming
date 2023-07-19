@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	char *p;
 	int (*fun)(int, int);
 
-	if (argc == 4)
+	if (argc == 4 && argv != NULL)
 	{
 		p = argv[2];
 		if (*p != '/' && *p != '%' && *p != '-' && *p != '+' && *p != '*')
