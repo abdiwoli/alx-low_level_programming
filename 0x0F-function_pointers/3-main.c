@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 	if (argc == 4)
 	{
 		opr = argv[2];
-		if (*opr != '/' && *opr != '%' && *opr != '-' && *opr != '+' && *opr != '*')
+		if (*opr != '/' && *opr != '%' && *opr != '-' && *opr != '+' && *opr != '*' && strlen(opr) != 1)
 		{
 			printf("Error\n");
 			exit(98);
