@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		}
 		num1 = atoi(argv[1]);
 		num2 = atoi(argv[3]);
-		if (num2 == 0 && *p == '/')
+		if (num2 == 0 && *p == '/' && num2 == 0 && *p == '%')
 		{
 			printf("Error\n");
 			exit(100);
