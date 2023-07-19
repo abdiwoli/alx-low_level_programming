@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 		num2 = atoi(argv[3]);
 		opr = argv[2];
 		fun = get_op_func(opr);
-		printf(" result %d\n", fun(num1, num2));
+		printf("%d\n", fun(num1, num2));
 	}
 	return (0);
 }
