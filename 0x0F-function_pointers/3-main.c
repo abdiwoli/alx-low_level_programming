@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
 	if (argc == 4)
 	{
-		opr = argv[2];
+		p = argv[2];
 		if (*p != '/' && *p != '%' && *p != '-' && *p != '+' && *p != '*')
 		{
 			printf("Error\n");
