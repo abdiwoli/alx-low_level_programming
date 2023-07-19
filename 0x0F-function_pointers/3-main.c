@@ -20,9 +20,9 @@ int main(int argc, char **argv)
 		num1 = atoi(argv[1]);
 		num2 = atoi(argv[3]);
 		opr = argv[2];
-		if (num == 0 && *optr == '/')
+		if (num2 == 0 && *opr == '/')
 		{
-			printf("Error");
+			printf("Error\n");
 			exit(99);
 		}
 		fun = get_op_func(opr);
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		printf("Error");
+		printf("Error\n");
 		exit(98);
 	}
 	return (0);
