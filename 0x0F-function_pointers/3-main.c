@@ -14,16 +14,20 @@ int main(int argc, char **argv)
 	char *opr;
 	int (*fun)(int, int);
 
-
 	if (argc == 4)
 	{
+		opr = argv[2];
+		if (*opr != '/' && *opr != '%' && *opr != '-' && *opr != '+' && *opr != '*')
+		{
+			printf("Error\n");
+			exit(98);
+		}
 		num1 = atoi(argv[1]);
 		num2 = atoi(argv[3]);
-		opr = argv[2];
 		if (num2 == 0 && *opr == '/')
 		{
 			printf("Error\n");
-			exit(99);
+			exit(100);
 		}
 		fun = get_op_func(opr);
 		printf("%d\n", fun(num1, num2));
