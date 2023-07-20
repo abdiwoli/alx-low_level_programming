@@ -14,7 +14,7 @@ void print_all(const char * const format, ...)
 	char *s = ", ", *str;
 
 	va_start(list, format);
-	while (*f && format[i])
+	while (*f)
 	{
 		if (*(f + 1) == '\0')
 			s = "";
