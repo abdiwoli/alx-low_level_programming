@@ -20,8 +20,11 @@ void print_all(const char * const format, ...)
 	va_start(list, format);
 	while (*f)
 	{
-		if (*(f + 1) == '\0')
+		while (*(f + 1) == '\0')
+		{
 			s = "\n";
+			break;
+		}
 		switch (*f)
 		{
 		case 'c':
