@@ -9,6 +9,7 @@
 int main(int argc, char **argv)
 {
 	int n, i;
+	unsigned char opcodes[] = {0x55, 0x48, 0x89, 0xE5, 0x48, 0x83, 0xEC, 0x30};
 
 	if (argv == NULL || argc != 2)
 	{
@@ -24,13 +25,12 @@ int main(int argc, char **argv)
 	}
 	for (i = 0; i < n; i++)
 	{
-		printf("%02hhx", *((char *)main + i));
+		printf("%02hhx", opcodes[i % 8]);
 		if (i < n - 1)
 			printf(" ");
 		else
 			printf("\n");
 	}
-	printf("\n");
 
 	return (0);
 }
