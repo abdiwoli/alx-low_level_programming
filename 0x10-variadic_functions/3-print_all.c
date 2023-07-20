@@ -12,23 +12,26 @@ void print_all(const char * const format, ...)
 {
 	va_list list;
 	char const *f = format;
+	char *s = ", ";
 
 	va_start(list, format);
 	while (*f)
 	{
+		if ( *(f + 1) == '\0')
+			s = "";
 		switch (*f)
 		{
 		case 'c':
-			printf("%c%s", va_arg(list, int), *(f + 1) != '\0' ? ", " : "");
+			printf("%c%s", va_arg(list, int), s);
 			break;
 		case 'i':
-			printf("%d%s", va_arg(list, int), *(f + 1) != '\0' ? ", " : "");
+			printf("%d%s", va_arg(list, int), s);
 			break;
 		case 'f':
-			printf("%f%s", va_arg(list, double), *(f + 1) != '\0' ? ", " : "");
+			printf("%f%s", va_arg(list, double), s);
 			break;
 		case 's':
-			printf("%s%s", va_arg(list, char *), *(f + 1) != '\0' ? ", " : "");
+			printf("%s%s", va_arg(list, char *), s);
 			break;
 		default:
 			break;
