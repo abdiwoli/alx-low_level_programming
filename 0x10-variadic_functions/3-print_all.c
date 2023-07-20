@@ -30,9 +30,10 @@ void print_all(const char * const format, ...)
 			printf("%f%s", va_arg(list, double), s);
 			break;
 		case 's':
-			if (va_arg(list, char *))
+			str = va_arg(list, char *);
+			if (str)
 			{
-				printf("%s%s", va_arg(list, char *), s);
+				printf("%s%s", str, s);
 				break;
 			}
 			str = "(nil)";
