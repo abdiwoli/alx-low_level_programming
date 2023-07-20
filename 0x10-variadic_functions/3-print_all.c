@@ -19,16 +19,16 @@ void print_all(const char * const format, ...)
 		switch (*f)
 		{
 		case 'c':
-			printf("%c%s", va_arg(list, int), *(f + 1) != '\0' ? ", " : "");
+			printf("%c%s", va_arg(list, int), *(f + 1) != '\0' ? ", " : "\n");
 			break;
 		case 'i':
-			printf("%d%s", va_arg(list, int), *(f + 1) != '\0' ? ", " : "");
+			printf("%d%s", va_arg(list, int), *(f + 1) != '\0' ? ", " : "\n");
 			break;
 		case 'f':
-			printf("%f%s", va_arg(list, double), *(f + 1) != '\0' ? ", " : "");
+			printf("%f%s", va_arg(list, double), *(f + 1) != '\0' ? ", " : "\n");
 			break;
 		case 's':
-			printf("%s%s", va_arg(list, char *), *(f + 1) != '\0' ? ", " : "");
+			printf("%s%s", va_arg(list, char *), *(f + 1) != '\0' ? ", " : "\n");
 			break;
 		default:
 			break;
@@ -36,5 +36,4 @@ void print_all(const char * const format, ...)
 		f++;
 	}
 	va_end(list);
-	printf("\n");
 }
