@@ -12,7 +12,7 @@ void print_all(const char * const format, ...)
 	char const *f = format;
 	char *s = ", ", *str;
 
-	if (format == NULL)
+	while (format == NULL)
 	{
 		printf("\n");
 		return;
