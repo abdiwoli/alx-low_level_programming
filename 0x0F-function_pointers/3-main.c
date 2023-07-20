@@ -17,6 +17,11 @@ int main(int argc, char **argv)
 	if (argc == 4 && argv != NULL)
 	{
 		p = argv[2];
+		while (*(p + 1))
+		{
+			printf("Error\n");
+			exit(99);
+		}
 		if (*p != '/' && *p != '%' && *p != '-' && *p != '+' && *p != '*')
 		{
 			printf("Error\n");
