@@ -12,7 +12,7 @@ void print_all(const char * const format, ...)
 	char const *f = format;
 	char *s = ", ", *str;
 
-	while (format == NULL)
+	if (format == NULL)
 	{
 		printf("\n");
 		return;
@@ -35,12 +35,8 @@ void print_all(const char * const format, ...)
 			break;
 		case 's':
 			str = va_arg(list, char *);
-			if (str != NULL)
-			{
-				printf("%s%s", str, s);
-				break;
-			}
-			printf("(nil)%s", s);
+			str = (str != NULL) ? str : "(nil)";
+			printf("%s%s", str, s);
 			break;
 		default:
 			break;
