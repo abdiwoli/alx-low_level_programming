@@ -1,6 +1,7 @@
 #include "variadic_functions.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 /**
  * print_all - function that prints every thing
  * @format: the format
@@ -31,7 +32,7 @@ void print_all(const char * const format, ...)
 			break;
 		case 's':
 			str = va_arg(list, char *);
-			if (str != NULL)
+			if (str != NULL && strlen(str) > 1)
 			{
 				printf("%s%s", str, s);
 				break;
