@@ -1,18 +1,20 @@
 #include "variadic_functions.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 /**
  * print_all - function that prints every thing
  * @format: the format
  * @...: arguments
  */
+
 void print_all(const char * const format, ...)
 {
 	va_list list;
 	char const *f = format;
 	char *s = ", ", *str;
 
-	while (format == NULL)
+	if (format == NULL)
 	{
 		printf("\n");
 		return;
@@ -20,8 +22,11 @@ void print_all(const char * const format, ...)
 	va_start(list, format);
 	while (*f)
 	{
-		if (*(f + 1) == '\0')
-			s = "\n";
+		while (*(f + 1) == '\0')
+		{
+			s = "";
+			break;
+		}
 		switch (*f)
 		{
 		case 'c':
@@ -40,7 +45,8 @@ void print_all(const char * const format, ...)
 				printf("%s%s", str, s);
 				break;
 			}
-			printf("(nil)%s", s);
+			str = "(nil)";
+			printf("%s%s", str, s);
 			break;
 		default:
 			break;
@@ -48,4 +54,5 @@ void print_all(const char * const format, ...)
 		f++;
 	}
 	va_end(list);
+	printf("\n");
 }
