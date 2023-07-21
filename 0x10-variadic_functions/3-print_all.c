@@ -24,7 +24,7 @@ void print_all(const char * const format, ...)
 	{
 		while (*(f + 1) == '\0')
 		{
-			s = "";
+			s = "\n";
 			break;
 		}
 		switch (*f)
@@ -40,12 +40,8 @@ void print_all(const char * const format, ...)
 			break;
 		case 's':
 			str = va_arg(list, char *);
-			if (str != NULL)
-			{
-				printf("%s%s", str, s);
-				break;
-			}
-			str = "(nil)";
+			if (str == NULL)
+				str = "(nil)";
 			printf("%s%s", str, s);
 			break;
 		default:
@@ -54,5 +50,4 @@ void print_all(const char * const format, ...)
 		f++;
 	}
 	va_end(list);
-	printf("\n");
 }
