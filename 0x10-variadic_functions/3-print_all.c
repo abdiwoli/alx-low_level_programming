@@ -44,8 +44,6 @@ void print_all(const char * const format, ...)
 				str = "(nil)";
 			printf("%s%s", str, s);
 			break;
-		default:
-			break;
 		}
 		f++;
 	}
