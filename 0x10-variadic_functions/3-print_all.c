@@ -24,7 +24,7 @@ void print_all(const char * const format, ...)
 	{
 		while (*(f + 1) == '\0')
 		{
-			s = "\n";
+			s = "";
 			break;
 		}
 		switch (*f)
@@ -50,4 +50,5 @@ void print_all(const char * const format, ...)
 		f++;
 	}
 	va_end(list);
+	printf("\n");
 }
