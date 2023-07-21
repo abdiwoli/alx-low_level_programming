@@ -12,7 +12,7 @@ void print_all(const char * const format, ...)
 	char const *f = format;
 	char *s = ", ", *str;
 
-	if (format == NULL)
+	while (format == NULL)
 	{
 		printf("\n");
 		return;
@@ -20,11 +20,8 @@ void print_all(const char * const format, ...)
 	va_start(list, format);
 	while (*f)
 	{
-		while (*(f + 1) == '\0')
-		{
+		if (*(f + 1) == '\0')
 			s = "\n";
-			break;
-		}
 		switch (*f)
 		{
 		case 'c':
@@ -38,8 +35,12 @@ void print_all(const char * const format, ...)
 			break;
 		case 's':
 			str = va_arg(list, char *);
-			str = (str != NULL) ? str : "(nil)";
-			printf("%s%s", str, s);
+			if (str != NULL)
+			{
+				printf("%s%s", str, s);
+				break;
+			}
+			printf("(nil)%s", s);
 			break;
 		default:
 			break;
