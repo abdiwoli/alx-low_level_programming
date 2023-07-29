@@ -34,7 +34,7 @@ list_t *add_node(list_t **head, const char *str)
 		if (*head == NULL)
 			return (NULL);
 		(*head)->str = malloc(strlen(str) + 1);
-		if ( (*head)->str == NULL)
+		if ((*head)->str == NULL)
 		{
 			free(*head);
 			return (NULL);
