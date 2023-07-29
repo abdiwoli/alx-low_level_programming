@@ -25,6 +25,7 @@ list_t *add_node(list_t **head, const char *str)
 		strcpy(node->str, str);
 
 		node->next = *head;
+		node->len = strlen(str);
 		*head = node;
 		return (node);
 	}
@@ -39,6 +40,7 @@ list_t *add_node(list_t **head, const char *str)
 			free(*head);
 			return (NULL);
 		}
+		(*head)->len = strlen(str);
 		strcpy((*head)->str, str);
 		(*head)->next = NULL;
 		return (*head);
