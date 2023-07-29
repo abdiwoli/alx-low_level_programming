@@ -10,9 +10,9 @@ void print_message(void)
 
 	s = "You're beat! and yet, you must allow,\nI bore my house upon my back!\n";
 
-	while (*str)
+	while (*s)
 	{
 		putchar(*s);
-		str++;
+		s++;
 	}
 }
