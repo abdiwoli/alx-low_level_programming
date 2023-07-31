@@ -1,0 +1,24 @@
+#include "main.c"
+/**
+ * add_nodeint - function addts new node at the beg
+ * @h: linked lis
+ * @n: the value
+ * Return: node
+ */
+listint_t *add_nodeint(listint_t **head, const int n)
+{
+	if (head == NULL)
+		return (NULL);
+	if (*head == NULL)
+	{
+		*head = malloc(sizeof(listint_t));
+		*head->n = n;
+		return (head);
+	}
+	listint_t *node = malloc(sizeof(listint_t));
+	node->n = n;
+	node->next = *head;
+	*head = node;
+
+	return (node);
+}
