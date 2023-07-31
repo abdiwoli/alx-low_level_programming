@@ -4,6 +4,7 @@
 /**
  * print_listint - function prints int
  * @h: linked list paramater
+ * Return: number of nodes
  */
 size_t print_listint(const listint_t *h)
 {
