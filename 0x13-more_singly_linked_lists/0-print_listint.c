@@ -18,7 +18,7 @@ int case_min(void)
 
 /**
  * _putd - function prints digits for %d and %i format specifiers
- * @args: va_list type
+ * @num: int passedx
  * Return: number of digits printed
  */
 
