@@ -12,7 +12,7 @@ int case_min(void)
 	int pos;
 
 	for (pos = 0; pos < 11; pos++)
-		putchar(minStr[pos]);
+		_putchar(minStr[pos]);
 	return (11);
 }
 
@@ -31,7 +31,7 @@ int _putd(int num)
 	if (num == 0)
 	{
 		n++;
-		putchar('0');
+		_putchar('0');
 		return (n);
 	}
 	if (num == INT_MIN)
@@ -39,7 +39,7 @@ int _putd(int num)
 	if (num < 0)
 	{
 		n++;
-		putchar('-');
+		_putchar('-');
 		num = -num;
 	}
 	while (num != 0)
@@ -52,7 +52,7 @@ int _putd(int num)
 	{
 		pos--;
 		n++;
-		putchar(buffer[pos]);
+		_putchar(buffer[pos]);
 	}
 	return (n);
 }
@@ -69,7 +69,7 @@ size_t print_listint(const listint_t *h)
 	{
 		n = h->n;
 		_putd(n);
-		putchar('\n');
+		_putchar('\n');
 		num++;
 		h = h->next;
 	}
