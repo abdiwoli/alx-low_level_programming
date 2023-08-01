@@ -1,0 +1,53 @@
+#include "lists.h"
+#include <stdlib.h>
+#include <stdio.h>
+/**
+ * insert_nodeint_at_index - function name
+ * @idx: indx to insert
+ * @head: the pointer list
+ * @n: the new value of new node
+ * Return: n
+ */
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
+{
+	listint_t *current, *new_node;
+	unsigned int current_idx = 0;
+
+	if (head == NULL)
+		return (NULL);
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
+		return (NULL);
+	new_node->n = n;
+	if (*head == NULL && idx == 0)
+	{
+		/* Special case: Insert at the beginning when the list is empty */
+		*head = new_node;
+		new_node->next = NULL;
+		return (new_node);
+	}
+
+	if (idx == 0)
+	{
+		/* Insert at the beginning when the list is not empty */
+		new_node->next = *head;
+		*head = new_node;
+		return (new_node);
+	}
+	current = *head;
+	while (current != NULL && current_idx < (idx - 1))
+	{
+		current = current->next;
+		current_idx++;
+	}
+	if (current == NULL)
+	{
+		/* Index is greater than the size of the list, handle this case as needed */
+		free(new_node);
+		return (NULL);
+	}
+	/* Insert the new_node after the node at index (idx - 1) */
+	new_node->next = current->next;
+	current->next = new_node;
+	return (new_node);
+}
