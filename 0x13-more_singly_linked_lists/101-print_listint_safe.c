@@ -40,7 +40,6 @@ size_t print_listint_safe(const listint_t *head)
 	if (flag == 1)
 	{
 		printf("-> [%p] %d\n", (void *)arr[cycle_idx], arr[cycle_idx]->n);
-		exit(98);
 	}
 
 	return (n);
