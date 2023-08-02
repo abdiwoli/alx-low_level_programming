@@ -12,6 +12,8 @@ size_t print_listint_safe(const listint_t *head)
 	const listint_t *arr[100];
 	int i, n = 0, flag = 0, cycle_idx = -1;
 
+	if (head == NULL)
+		exit(98);
 	while (head)
 	{
 		for (i = 0; i < n; i++)
