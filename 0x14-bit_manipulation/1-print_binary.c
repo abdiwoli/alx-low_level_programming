@@ -18,6 +18,6 @@ void print_binary(unsigned long int n)
 			_putchar(bit + '0');
 		mask >>= 1;
 	}
-	if (bit == 0)
+	if (p == 0)
 		_putchar(0 + '0');
 }
