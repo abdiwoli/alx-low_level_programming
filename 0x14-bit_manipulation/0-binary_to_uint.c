@@ -24,7 +24,7 @@ void fillArrayWithBits(int binary[], int len)
 
 unsigned int binary_to_uint(const char *b)
 {
-	int i = 0, len = strlen(b);
+	int i = 0, len = b == NULL ? 0 : strlen(b);
 	unsigned int sum = 0;
 	int *binary = (int *)malloc(len * sizeof(int));
 
