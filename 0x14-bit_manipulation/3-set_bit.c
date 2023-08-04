@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 /**
  * set_bit - function sets 1 bit
  * @n: the pointer to n
@@ -7,6 +8,8 @@
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
+	if (n == NULL)
+		return (-1);
 	*n |= (1 << index);
 	if (n)
 		return (1);
