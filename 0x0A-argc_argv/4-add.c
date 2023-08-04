@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 			}
 			num = strtol(argv[i], &endptr, 10);
 			if (num)
-			sum += num;
+				sum += num;
 		}
 		printf("%d\n", sum);
 	}

@@ -19,6 +19,7 @@ void print_all(const char * const format, ...)
 		printf("\n");
 		return;
 	}
+
 	va_start(list, format);
 	while (*f)
 	{

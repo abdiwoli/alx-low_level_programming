@@ -1,1 +1,1 @@
-README me for 0x06-pointers_arrays_strings
+README 0x08-recursion alx low level programming
