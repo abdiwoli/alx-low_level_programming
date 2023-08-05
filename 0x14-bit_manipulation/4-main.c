@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <limits.h>
 #include "main.h"
 
 /**
@@ -9,7 +8,10 @@
  */
 int main(void)
 {
-	print_binary(ULONG_MAX);
-	printf("\n");
+	int n;
+	unsigned long int nb = 2048;
+
+	n = set_bit(&nb, 2000);
+	printf("nb:%lu\nret:%d\n", nb, n);
 	return (0);
 }
