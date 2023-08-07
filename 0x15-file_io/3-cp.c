@@ -12,16 +12,17 @@
 int main(int argc, char *argv[])
 {
 	char c, *str, *st;
+	FILE *file_from, *file_to;
 
 	if (argc < 3)
 		exit(98);
 	st = argv[1];
 	str = argv[2];
-	FILE *file_from = fopen(st, "r");
+	file_from = fopen(st, "r");
 
 	if (file_from == NULL)
 		exit(98);
-	FILE *file_to = fopen(str, "w");
+	file_to = fopen(str, "w");
 
 	if (file_to != NULL)
 	{
