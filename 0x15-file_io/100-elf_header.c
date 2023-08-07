@@ -1,83 +1,221 @@
-#define _GNU_SOURCE
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <elf.h>
+#include <fcntl.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-void print_ident_magic(const unsigned char *e_ident)
+void print_elf_magic(const unsigned char *buffer);
+void print_elf_class(const unsigned char *buffer);
+void print_elf_data(const unsigned char *buffer);
+void print_elf_version(const unsigned char *buffer);
+void print_elf_osabi(const unsigned char *buffer);
+void print_elf_abivers(const unsigned char *buffer);
+void print_elf_type(const unsigned char *buffer, int big_endian);
+void print_elf_entry(const unsigned char *buffer, size_t bit_mode, int big_endian);
+
+int main(int argc, const char *argv[])
 {
-	int i;
-	printf("  Magic:   ");
-	for (i = 0; i < EI_NIDENT; i++) {
-		printf("%02x ", e_ident[i]);
-	}
-	printf("\n");
-}
-
-void print_basic_info(const Elf32_Ehdr *header) {
-	printf("  Class:                             ELF");
-	printf("%d\n", header->e_ident[EI_CLASS] == ELFCLASS32 ? 32 : 64);
-	printf("  Data:                              2's complement, ");
-	printf("%s\n", header->e_ident[EI_DATA] == ELFDATA2LSB ? "little endian" : "big endian");
-	printf("  Version:                           %d (current)\n", header->e_ident[EI_VERSION]);
-	printf("  OS/ABI:                            ");
-	switch (header->e_ident[EI_OSABI]) {
-	case ELFOSABI_SYSV: printf("UNIX - System V\n"); break;
-	case ELFOSABI_NETBSD: printf("UNIX - NetBSD\n"); break;
-	case ELFOSABI_LINUX: printf("UNIX - Linux\n"); break;
-	case ELFOSABI_SOLARIS: printf("UNIX - Solaris\n"); break;
-	default: printf("<unknown: %d>\n", header->e_ident[EI_OSABI]);
-	}
-	printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
-	printf("  Type:                              ");
-	switch (header->e_type) {
-	case ET_NONE: printf("NONE (Unknown Type)\n"); break;
-	case ET_REL: printf("REL (Relocatable file)\n"); break;
-	case ET_EXEC: printf("EXEC (Executable file)\n"); break;
-	case ET_DYN: printf("DYN (Shared object file)\n"); break;
-	case ET_CORE: printf("CORE (Core file)\n"); break;
-	default: printf("<unknown: %x>\n", header->e_type);
-	}
-	printf("  Entry point address:               0x%lx\n", (unsigned long)header->e_entry);
-}
-
-int main(int argc, char *argv[]) {
-	const char* file_path;
+	unsigned char buffer[18];
 	int fd;
-	Elf32_Ehdr header;
 
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <ELF file>\n", argv[0]);
-		return 98;
+	if (argc != 2)
+	{
+		fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
+		exit(98);
 	}
 
-	file_path = argv[1];
-	fd = open(file_path, O_RDONLY);
-	if (fd == -1) {
-		fprintf(stderr, "Error: Unable to open file: %s\n", file_path);
-		return 98;
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error: Can't read from file");
+		exit(98);
 	}
 
-	if (read(fd, &header, sizeof(Elf32_Ehdr)) != sizeof(Elf32_Ehdr)) {
-		fprintf(stderr, "Error: Failed to read ELF header from file: %s\n", file_path);
+	if (read(fd, buffer, 18) != 18)
+	{
+		fprintf(stderr, "Error: Can't read ELF header from file\n");
 		close(fd);
-		return 98;
+		exit(98);
 	}
 
-	if (header.e_ident[EI_MAG0] != ELFMAG0 ||
-	            header.e_ident[EI_MAG1] != ELFMAG1 ||
-	            header.e_ident[EI_MAG2] != ELFMAG2 ||
-	    header.e_ident[EI_MAG3] != ELFMAG3) {
-		fprintf(stderr, "Error: Not an ELF file: %s\n", file_path);
-		close(fd);
-		return 98;
-	}
-
-	print_ident_magic(header.e_ident);
-	print_basic_info(&header);
+	print_elf_magic(buffer);
+	print_elf_class(buffer);
+	print_elf_data(buffer);
+	print_elf_version(buffer);
+	print_elf_osabi(buffer);
+	print_elf_abivers(buffer);
+	print_elf_type(buffer, 0); /* Assume little endian */
+	print_elf_entry(buffer + 24, buffer[EI_CLASS] == ELFCLASS64 ? 64 : 32, 0); /* Assume little endian */
 
 	close(fd);
 
 	return 0;
+}
+
+void print_elf_magic(const unsigned char *buffer)
+{
+	int i;
+
+	if (memcmp(buffer, ELFMAG, SELFMAG) != 0)
+	{
+		fprintf(stderr, "Error: Not an ELF file\n");
+		exit(98);
+	}
+
+	printf("ELF Header:\n  Magic:   ");
+	for (i = 0; i < SELFMAG; ++i)
+	{
+		printf("%02x%c", buffer[i], i < SELFMAG - 1 ? ' ' : '\n');
+	}
+}
+
+void print_elf_class(const unsigned char *buffer)
+{
+	printf("  %-34s ", "Class:");
+	if (buffer[EI_CLASS] == ELFCLASS64)
+	{
+		printf("ELF64\n");
+	}
+	else if (buffer[EI_CLASS] == ELFCLASS32)
+	{
+		printf("ELF32\n");
+	}
+	else
+	{
+		printf("<unknown: %x>\n", buffer[EI_CLASS]);
+	}
+}
+
+void print_elf_data(const unsigned char *buffer)
+{
+	printf("  %-34s ", "Data:");
+	if (buffer[EI_DATA] == ELFDATA2MSB)
+	{
+		printf("2's complement, big endian\n");
+	}
+	else if (buffer[EI_DATA] == ELFDATA2LSB)
+	{
+		printf("2's complement, little endian\n");
+	}
+	else
+	{
+		printf("Invalid data encoding\n");
+	}
+}
+
+void print_elf_version(const unsigned char *buffer)
+{
+	printf("  %-34s %u", "Version:", buffer[EI_VERSION]);
+	if (buffer[EI_VERSION] == EV_CURRENT)
+	{
+		printf(" (current)\n");
+	}
+	else
+	{
+		printf("\n");
+	}
+}
+
+void print_elf_osabi(const unsigned char *buffer)
+{
+	const char *os_table[] = {
+		"UNIX - System V",
+		"UNIX - HP-UX",
+		"UNIX - NetBSD",
+		"UNIX - GNU",
+		"<unknown: 4>",
+		"<unknown: 5>",
+		"UNIX - Solaris",
+		"UNIX - AIX",
+		"UNIX - IRIX",
+		"UNIX - FreeBSD",
+		"UNIX - Tru64",
+		"Novell - Modesto",
+		"UNIX - OpenBSD",
+		"VMS - OpenVMS",
+		"HP - Non-Stop Kernel",
+		"AROS",
+		"FenixOS",
+		"Nuxi CloudABI",
+		        "Stratus Technologies OpenVOS"
+	};
+
+	printf("  %-34s ", "OS/ABI:");
+	if (buffer[EI_OSABI] < sizeof(os_table) / sizeof(os_table[0]))
+	{
+		printf("%s\n", os_table[buffer[EI_OSABI]]);
+	}
+	else
+	{
+		printf("<unknown: %x>\n", buffer[EI_OSABI]);
+	}
+}
+
+void print_elf_abivers(const unsigned char *buffer)
+{
+	printf("  %-34s %u\n", "ABI Version:", buffer[EI_ABIVERSION]);
+}
+void print_elf_type(const unsigned char *buffer, int big_endian)
+{
+	char *type_table[] = {
+		"NONE (No file type)",
+		"REL (Relocatable file)",
+		"EXEC (Executable file)",
+		"DYN (Shared object file)",
+		        "CORE (Core file)"
+	};
+
+	unsigned int type;
+
+	printf("  %-34s ", "Type:");
+
+	if (big_endian)
+	{
+		type = buffer[16] << 8 | buffer[17];
+	}
+	else
+	{
+		type = buffer[17] << 8 | buffer[16];
+	}
+
+	if (type < sizeof(type_table) / sizeof(type_table[0]))
+	{
+		printf("%s\n", type_table[type]);
+	}
+	else if (type >= ET_LOOS && type <= ET_HIOS)
+	{
+		printf("OS Specific: (%4x)\n", type);
+	}
+	else if (type >= ET_LOPROC && type <= ET_HIPROC)
+	{
+		printf("Processor Specific: (%4x)\n", type);
+	}
+	else
+	{
+		printf("<unknown: %x>\n", type);
+	}
+}
+
+void print_elf_entry(const unsigned char *buffer, size_t bit_mode, int big_endian)
+{
+	int address_size = bit_mode / 8, i;
+	unsigned long entry = 0;
+
+	if (big_endian)
+	{
+		for (i = 0; i < address_size; ++i)
+		{
+			entry = (entry << 8) | buffer[i];
+		}
+	}
+	else
+	{
+		for (i = address_size - 1; i >= 0; --i)
+		{
+			entry = (entry << 8) | buffer[i];
+		}
+	}
+
+	printf("  %-34s 0x%lx\n", "Entry point address:", entry);
 }
