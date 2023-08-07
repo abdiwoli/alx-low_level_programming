@@ -4,7 +4,8 @@
 /**
  * append_text_to_file - function appends text
  * @filename: the file name
- * @ text_content: content to append
+ * @text_content: content to append
+ * Return: 1 on succes
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
