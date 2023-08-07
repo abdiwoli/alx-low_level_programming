@@ -5,12 +5,9 @@
 #include <elf.h>
 #include <stdlib.h>
 
-void print_ident_magic(const unsigned char *e_ident)
-{
-	int i;
+void print_ident_magic(const unsigned char *e_ident) {
 	printf("  Magic:   ");
-	for (i = 0; i < EI_NIDENT; i++)
-	{
+	for (int i = 0; i < EI_NIDENT; i++) {
 		printf("%02x ", e_ident[i]);
 	}
 	printf("\n");
@@ -49,12 +46,14 @@ int main(int argc, char *argv[]) {
 	Elf32_Ehdr header;
 
 	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <ELF file>\n", argv[0]);
 		return 98;
 	}
 
 	file_path = argv[1];
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1) {
+		fprintf(stderr, "Error: Unable to open file: %s\n", file_path);
 		return 98;
 	}
 
