@@ -5,9 +5,11 @@
 #include <elf.h>
 #include <stdlib.h>
 
-void print_ident_magic(const unsigned char *e_ident) {
+void print_ident_magic(const unsigned char *e_ident)
+{
+	int i;
 	printf("  Magic:   ");
-	for (int i = 0; i < EI_NIDENT; i++) {
+	for (i = 0; i < EI_NIDENT; i++) {
 		printf("%02x ", e_ident[i]);
 	}
 	printf("\n");
