@@ -11,7 +11,7 @@
  */
 void erorm(char *str)
 {
-	fprintf(stderr, "Error: Can't write %s\n", str);
+	fprintf(stderr, "Error: Can't write to %s\n", str);
 	exit(99);
 }
 /**
