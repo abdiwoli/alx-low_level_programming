@@ -12,9 +12,11 @@
  */
 int main(int argc, char *argv[])
 {
-	char c, *st, *str;
+	char *st, *str;
 	FILE *file_from;
 	int fd_to, fd_close;
+	char buffer[1024];
+	ssize_t bytesRead;
 	mode_t m = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (argc < 3)
@@ -41,8 +43,14 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 
-	while ((c = fgetc(file_from)) != EOF)
-		write(fd_to, &c, 1);
+	while ((bytesRead = fread(buffer, 1, sizeof(buffer), file_from)) > 0) {
+		if (write(fd_to, buffer, bytesRead) != bytesRead) {
+			fprintf(stderr, "Error: Can't write %s\n", str);
+			fclose(file_from);
+			close(fd_to);
+			exit(99);
+		}
+	}
 
 	fd_close = fclose(file_from);
 	if (fd_close != 0)
