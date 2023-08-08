@@ -4,6 +4,16 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <stdlib.h>
+#include <string.h>
+/**
+ * erorm - function prints error
+ * @str: the path
+ */
+void erorm(char *str)
+{
+	fprintf(stderr, "Error: Can't write %s\n", str);
+	exit(99);
+}
 /**
  * main - function copied file
  * @argc: the size of the arguments
@@ -30,14 +40,11 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	fd_to = open(str, O_CREAT | O_WRONLY | O_TRUNC, m);
+	if (fd_to == -1)
+		erorm(str);
 	while ((bytesRead = fread(buffer, 1, sizeof(buffer), file_from)) > 0)
-		if ((write(fd_to, buffer, bytesRead) != bytesRead) || fd_to == -1)
-		{
-			fprintf(stderr, "Error: Can't write %s\n", str);
-			fclose(file_from);
-			close(fd_to);
-			exit(99);
-		}
+		if (write(fd_to, buffer, bytesRead) != bytesRead)
+			erorm(str);
 	fd_close = fclose(file_from);
 	if (fd_close != 0)
 	{
