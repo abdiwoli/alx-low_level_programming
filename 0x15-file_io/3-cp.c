@@ -18,20 +18,27 @@ int main(int argc, char *argv[])
 	mode_t m = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (argc < 3)
-		exit(98);
+	{
+		fprintf(stderr, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
 
 	st = argv[1];
 	str = argv[2];
 	file_from = fopen(st, "r");
 
 	if (file_from == NULL)
+	{
+		fprintf(stderr, "Error: Can't read from file NAME_OF_THE_FILE %s\n", st);
 		exit(98);
+	}
 
 	fd_to = open(str, O_CREAT | O_WRONLY | O_TRUNC, m);
 	if (fd_to == -1)
 	{
 		fclose(file_from);
-		exit(98);
+		fprintf(stderr, "Error: Can't write %s\n", str);
+		exit(99);
 	}
 
 	while ((c = fgetc(file_from)) != EOF)
