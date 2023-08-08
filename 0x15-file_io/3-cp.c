@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	file_from = fopen(argv[1], "r");
 	if (file_from == NULL)
 	{
-		fprintf(stderr, "Error: Can't read from file NAME_OF_THE_FILE %s\n", st);
+		fprintf(stderr, "Error: Can't read from file %s\n", st);
 		exit(98);
 	}
 	fd_to = open(str, O_CREAT | O_WRONLY | O_TRUNC, m);
