@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
 	char c, *st, *str;
 	FILE *file_from;
-	int fd_to;
+	int fd_to, fd_close;
 	mode_t m = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (argc < 3)
@@ -44,8 +44,17 @@ int main(int argc, char *argv[])
 	while ((c = fgetc(file_from)) != EOF)
 		write(fd_to, &c, 1);
 
-	fclose(file_from);
-	close(fd_to);
-
+	fd_close = fclose(file_from);
+	if (fd_close != 0)
+	{
+		fprintf(stderr, "Error: Can't close fd %d", fd_close);
+		exit(100);
+	}
+	fd_close = close(fd_to);
+	if (fd_close != 0)
+	{
+		fprintf(stderr, "Error: Can't close fd %d", fd_close);
+		exit(100);
+	}
 	return (0);
 }
