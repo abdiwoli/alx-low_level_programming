@@ -16,12 +16,13 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (ptr == NULL || filename == NULL)
 		return (0);
 
-	for (i = 0; i < letters; i++)
+	c = fgetc(ptr);
+	for (i = 0; (i < letters && c != EOF); i++)
 	{
-		c = fgetc(ptr);
 		if (c == EOF)
 			return (i);
 		write(1, &c, 1);
+		c = fgetc(ptr);
 	}
 	fclose(ptr);
 	return (i);
