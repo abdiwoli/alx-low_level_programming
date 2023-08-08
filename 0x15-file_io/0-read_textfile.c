@@ -9,7 +9,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	size_t i = 0;
+	size_t i = 0, n = 0;
 	char c;
 	FILE *ptr = fopen(filename, "r");
 
@@ -22,10 +22,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		if (c == EOF)
 		{
 			fclose(ptr);
-			return (i);
+			return (n);
 		}
-		write(1, &c, 1);
+		n += write(1, &c, 1);
 	}
 	fclose(ptr);
-	return (i);
+	return (n);
 }
