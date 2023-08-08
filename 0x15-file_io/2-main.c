@@ -3,20 +3,23 @@
 #include "main.h"
 
 /**
- * main - check the code
+ * main - check the code .
  *
- * Return: Always 0.
+ * @ac: Arguments counter
+ * @av: Arguments array
+ *
+ * Return: 0 on success, 1 on error
  */
 int main(int ac, char **av)
 {
 	int res;
 
-	if (ac != 3)
+	if (ac < 2)
 	{
-		dprintf(2, "Usage: %s filename text\n", av[0]);
-		exit(1);
+		printf("Usage: %s filename\n", av[0]);
+		return (1);
 	}
-	res = append_text_to_file(av[1], av[2]);
-	printf("-> %i)\n", res);
+	res = append_text_to_file(av[1], NULL);
+	printf("%i\n", res);
 	return (0);
 }
