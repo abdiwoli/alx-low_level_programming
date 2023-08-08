@@ -13,11 +13,16 @@
 int create_file(const char *filename, char *text_content)
 {
 	int flag = O_RDWR | O_CREAT | O_TRUNC;
+	int fp;
 	mode_t file_mode = S_IRUSR | S_IWUSR;
-	int fp = open(filename, flag, file_mode);
 
-	if (fp == -1 || filename == NULL)
+	if (filename == NULL)
 		return (-1);
+	fp = open(filename, flag, file_mode);
+	if (fp == -1)
+		return (-1);
+	if (text_content == NULL)
+		return (1);
 	write(fp, text_content, strlen(text_content));
 	close(fp);
 
