@@ -12,10 +12,9 @@
  */
 int main(int argc, char *argv[])
 {
-	char *st, *str;
+	char *st = argv[1], *str = argv[2], buffer[1024];
 	FILE *file_from;
 	int fd_to, fd_close;
-	char buffer[1024];
 	ssize_t bytesRead;
 	mode_t m = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
@@ -24,34 +23,21 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
-	st = argv[1];
-	str = argv[2];
-	file_from = fopen(st, "r");
-
+	file_from = fopen(argv[1], "r");
 	if (file_from == NULL)
 	{
-		fprintf(stderr, "Error: Can't read from file NAME_OF_THE_FILE %s\n", st);
+		fprintf(stderr, "Error: Can't read from file %s\n", st);
 		exit(98);
 	}
-
 	fd_to = open(str, O_CREAT | O_WRONLY | O_TRUNC, m);
-	if (fd_to == -1)
-	{
-		fclose(file_from);
-		fprintf(stderr, "Error: Can't write %s\n", str);
-		exit(99);
-	}
-
-	while ((bytesRead = fread(buffer, 1, sizeof(buffer), file_from)) > 0) {
-		if (write(fd_to, buffer, bytesRead) != bytesRead) {
+	while ((bytesRead = fread(buffer, 1, sizeof(buffer), file_from)) > 0)
+		if ((write(fd_to, buffer, bytesRead) != bytesRead) || fd_to == -1)
+		{
 			fprintf(stderr, "Error: Can't write %s\n", str);
 			fclose(file_from);
 			close(fd_to);
 			exit(99);
 		}
-	}
-
 	fd_close = fclose(file_from);
 	if (fd_close != 0)
 	{
