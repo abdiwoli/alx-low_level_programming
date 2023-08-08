@@ -14,11 +14,6 @@ void erorm(char *str)
 	fprintf(stderr, "Error: Can't write to %s\n", str);
 	exit(99);
 }
-void errof(char *st)
-{
-	fprintf(stderr, "Error: Can't read from file %s\n", st);
-	exit(98);
-}
 /**
  * main - function copied file
  * @argc: the size of the arguments
@@ -48,12 +43,8 @@ int main(int argc, char *argv[])
 	if (fd_to == -1)
 		erorm(str);
 	while ((bytesRead = fread(buffer, 1, sizeof(buffer), file_from)) > 0)
-	{
-		if (bytesRead == -1)
-			errof(st);
 		if (write(fd_to, buffer, bytesRead) != bytesRead)
 			erorm(str);
-	}
 	fd_close = fclose(file_from);
 	if (fd_close != 0)
 	{
