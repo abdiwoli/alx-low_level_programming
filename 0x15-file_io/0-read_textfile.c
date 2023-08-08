@@ -1,6 +1,8 @@
 #include "main.h"
 #include <stdio.h>
-#include <limits.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 /**
  * read_textfile -funtion prints file
  * @filename: the file name
@@ -9,23 +11,25 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	size_t i = 0, n = 0;
-	char c;
-	FILE *ptr = fopen(filename, "r");
+	ssize_t let, n;
+	char *buffer = malloc(letters);
+	int fd = open(filename, O_RDONLY);
+	
 
-	if (ptr == NULL || filename == NULL)
+	if (fd == -1 || filename == NULL)
 		return (0);
-
-	for (i = 0; i < letters; i++)
+	let = read(fd, buffer, letters);
+	if (let == -1)
 	{
-		c = fgetc(ptr);
-		if (c == EOF)
-		{
-			fclose(ptr);
-			return (n);
-		}
-		n += write(1, &c, 1);
+		close(fd);
+		return (0);
 	}
-	fclose(ptr);
+
+	n = write(STDOUT_FILENO, buffer, let);
+	if (n == -1)
+	{
+		close(fd);
+		return (0);
+	}
 	return (n);
 }
