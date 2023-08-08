@@ -29,6 +29,7 @@ void erorm(char *str, FILE *file_from)
  * @argv: array
  * Return: 10 on succes
  */
+
 int main(int argc, char *argv[])
 {
 	char *st = argv[1], *str = argv[2], buffer[1024];
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	file_from = fopen(argv[1], "r");
-	if (file_from == NULL || file_from == -1)
+	if (file_from == NULL)
 	{
 		fprintf(stderr, "Error: Can't read from file %s\n", st);
 		exit(98);
