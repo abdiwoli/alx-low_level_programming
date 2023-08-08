@@ -8,19 +8,10 @@
 /**
  * erorm - function prints error
  * @str: the path
- * @file_from: file source
  */
-void erorm(char *str, FILE *file_from)
+void erorm(char *str)
 {
-	int fd_close = fclose(file_from);
-
-	if (fd_close != 0)
-	{
-		fprintf(stderr, "Error: Can't close fd %d", fd_close);
-		exit(100);
-	}
-	fclose(file_from);
-	fprintf(stderr, "Error: Can't write to %s\n", str);
+	fprintf(stderr, "Error: Can't write %s\n", str);
 	exit(99);
 }
 /**
@@ -43,17 +34,17 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	file_from = fopen(argv[1], "r");
-	if (file_from != NULL)
+	if (file_from == NULL)
 	{
 		fprintf(stderr, "Error: Can't read from file %s\n", st);
 		exit(98);
 	}
 	fd_to = open(str, O_CREAT | O_WRONLY | O_TRUNC, m);
 	if (fd_to == -1)
-		erorm(str, file_from);
+		erorm(str);
 	while ((bytesRead = fread(buffer, 1, sizeof(buffer), file_from)) > 0)
 		if (write(fd_to, buffer, bytesRead) != bytesRead)
-			erorm(str, file_from);
+			erorm(str);
 	fd_close = fclose(file_from);
 	if (fd_close != 0)
 	{
