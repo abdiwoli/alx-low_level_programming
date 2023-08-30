@@ -9,17 +9,17 @@
 size_t free_listint_safe(listint_t **h)
 {
 	const listint_t *arr[1024];
-	listint *head = *h;
+	listint_t *head = *h;
 	int i, n = 0, flag = 0;
 
 	if (h == NULL || *h == NULL)
 		return (0);
 
-	while (*h != NULL)
+	while (head != NULL)
 	{
 		for (i = 0; i < n; i++)
 		{
-			if (*h == arr[i])
+			if (head == arr[i])
 			{
 				flag = 1;
 				break;
@@ -29,9 +29,9 @@ size_t free_listint_safe(listint_t **h)
 		if (flag == 1)
 			break;
 
-		arr[n] = *h;
+		arr[n] = head;
 		n++;
-		*h = (*h)->next;
+		head = head->next;
 	}
 
 	for (i = 0; i < n; i++)
@@ -39,7 +39,7 @@ size_t free_listint_safe(listint_t **h)
 		free((void *)arr[i]);
 	}
 
-	head = NULL;
+	*h = NULL;
 
 	return (n);
 }
