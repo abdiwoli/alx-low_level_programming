@@ -9,12 +9,12 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *arr[100];
+	const listint_t *arr[1024];
 	int i, n = 0, flag = 0, cycle_idx = -1;
 
 	if (head == NULL)
 		return (0);
-	while (head)
+	while (head && i < 1024)
 	{
 		for (i = 0; i < n; i++)
 		{
