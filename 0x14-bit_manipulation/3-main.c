@@ -8,10 +8,16 @@
  */
 int main(void)
 {
-	int n;
-	unsigned long int nb = 2048;
+    unsigned long int n;
 
-	n = set_bit(&nb, 2000);
-	printf("nb:%lu\nret:%d\n", nb, n);
-	return (0);
+    n = 1024;
+    set_bit(&n, 5);
+    printf("%lu\n", n);
+    n = 0;
+    set_bit(&n, 10);
+    printf("%lu\n", n);
+    n = 98;
+    set_bit(&n, 0);
+    printf("%lu\n", n);
+    return (0);
 }
