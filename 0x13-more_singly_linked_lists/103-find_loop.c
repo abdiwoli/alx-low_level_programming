@@ -7,26 +7,20 @@
  * Return:n
  * @head: the list
  */
+
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *arr[1024];
-	int i, n = 0;
+	listint_t *slow = head;
+	listint_t *fast = head;
 
 	if (head == NULL)
-		return (0);
-	while (head && i < 1024)
+		return (NULL);
+	while (slow && fast && fast->next)
 	{
-		for (i = 0; i < n; i++)
-		{
-			if (head == arr[i])
-			{
-				return (arr[i]);
-			}
-		}
-
-		arr[n] = head;
-		n++;
-		head = head->next;
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast)
+			return (slow);
 	}
 	return (NULL);
 }
