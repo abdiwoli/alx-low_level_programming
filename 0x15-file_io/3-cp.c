@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(98);
+		exit(97);
 	}
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -42,7 +42,6 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 	buff[byte] = '\0';
-	printf("%s\n", buff);
 	if (access(filename2, F_OK) == 0)
 		fd2 = open(filename2, O_WRONLY | O_TRUNC);
 	else
@@ -50,9 +49,9 @@ int main(int argc, char **argv)
 	if (fd2 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename2);
-		exit(97);
+		exit(99);
 	}
-	printf("%d\n", fd2);
+
 	bytes = write(fd2, buff, strlen(buff));
 	cl2 = close(fd2);
 	cl = close(fd);
@@ -64,7 +63,7 @@ int main(int argc, char **argv)
 	if (bytes == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename2);
-		exit(97);
+		exit(99);
 	}
 	return (0);
 }
