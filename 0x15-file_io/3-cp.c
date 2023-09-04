@@ -1,88 +1,60 @@
-#include "main.h"
-#include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
 #include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <stdlib.h>
 #include <string.h>
-
 /**
- * create_new_file - function creates file
- * @filename: file
- * @text_content: content
- * Return: 1 or -1
+ * erorm - function prints error
+ * @str: the path
  */
-void create_new_file(const char *filename, char *text_content)
+void erorm(char *str)
 {
-	int fd, cl;
-	int size;
-
-	if (access(filename, F_OK) == 0)
-		fd = open(filename, O_WRONLY | O_TRUNC);
-	else
-		fd = open(filename, O_CREAT | O_WRONLY, 0664);
-	if (fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
-		exit(99);
-	}
-	if (text_content == NULL)
-	{
-		close(fd);
-		return;
-	}
-	size = write(fd, text_content, strlen(text_content));
-	if (size == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
-		exit(99);
-	}
-
-	cl = close(fd);
-	if (cl == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
+	fprintf(stderr, "Error: Can't write to %s\n", str);
+	exit(99);
 }
-
 /**
- * main - function copyes file
- * @argc: size
+ * main - function copied file
+ * @argc: the size of the arguments
  * @argv: array
- * Return: int
+ * Return: 10 on succes
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int fd;
-	int byte, cl;
-	char *filename = argv[1], *filename2 = argv[2];
-	char buff[1024];
+	char *st = argv[1], *str = argv[2], buffer[1024];
+	FILE *file_from;
+	int fd_to, fd_close;
+	ssize_t bytesRead;
+	mode_t m = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
-	if (argc != 3)
+	if (argc < 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	file_from = fopen(argv[1], "r");
+	if (file_from == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+		fprintf(stderr, "Error: Can't read from file %s\n", st);
 		exit(98);
 	}
-	byte = read(fd, buff, sizeof(buff));
-	if (byte == -1)
+	fd_to = open(str, O_CREAT | O_WRONLY | O_TRUNC, m);
+	if (fd_to == -1)
+		erorm(str);
+	while ((bytesRead = fread(buffer, 1, sizeof(buffer), file_from)) > 0)
+		if (write(fd_to, buffer, bytesRead) != bytesRead)
+			erorm(str);
+	fd_close = fclose(file_from);
+	if (fd_close != 0)
 	{
-		close(fd);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
-		exit(98);
+		fprintf(stderr, "Error: Can't close fd %d", fd_close);
+		exit(100);
 	}
-	buff[byte] = '\0';
-	create_new_file(filename2, buff);
-	cl = close(fd);
-	if (cl == -1)
+	fd_close = close(fd_to);
+	if (fd_close != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		fprintf(stderr, "Error: Can't close fd %d", fd_close);
 		exit(100);
 	}
 	return (0);
