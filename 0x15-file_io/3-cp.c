@@ -5,6 +5,47 @@
 #include <stddef.h>
 #include <fcntl.h>
 #include <string.h>
+
+/**
+ * create_new_file - function creates file
+ * @filename: file
+ * @text_content: content
+ * Return: 1 or -1
+ */
+void create_new_file(const char *filename, char *text_content)
+{
+	int fd, cl;
+	int size;
+
+	if (access(filename, F_OK) == 0)
+		fd = open(filename, O_WRONLY | O_TRUNC);
+	else
+		fd = open(filename, O_CREAT | O_WRONLY, 0664);
+	if (fd == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+		exit(99);
+	}
+	if (text_content == NULL)
+	{
+		close(fd);
+		return;
+	}
+	size = write(fd, text_content, strlen(text_content));
+	if (size == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+		exit(99);
+	}
+
+	cl = close(fd);
+	if (cl == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+}
+
 /**
  * main - function copyes file
  * @argc: size
@@ -13,8 +54,8 @@
  */
 int main(int argc, char **argv)
 {
-	int fd, fd2;
-	int byte, bytes, cl, cl2;
+	int fd;
+	int byte, cl;
 	char *filename = argv[1], *filename2 = argv[2];
 	char buff[1024];
 
@@ -32,38 +73,17 @@ int main(int argc, char **argv)
 	byte = read(fd, buff, sizeof(buff));
 	if (byte == -1)
 	{
-		cl = close(fd);
-		if (cl == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-			exit(100);
-		}
+		close(fd);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
 	buff[byte] = '\0';
-	if (access(filename2, F_OK) == 0)
-		fd2 = open(filename2, O_WRONLY | O_TRUNC);
-	else
-		fd2 = open(filename2, O_CREAT | O_WRONLY, 0664);
-	if (fd2 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename2);
-		exit(99);
-	}
-
-	bytes = write(fd2, buff, strlen(buff));
-	cl2 = close(fd2);
+	create_new_file(filename2, buff);
 	cl = close(fd);
-	if ((cl == -1) | (cl2 == -1))
+	if (cl == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd == -1 ? fd : fd2);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
-	}
-	if (bytes == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename2);
-		exit(99);
 	}
 	return (0);
 }
