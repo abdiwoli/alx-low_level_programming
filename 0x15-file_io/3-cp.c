@@ -72,6 +72,11 @@ int main(int argc, char **argv)
 	}
 	while ((byte = read(fd, buff, sizeof(buff))) > 0)
 	{
+		if (byte == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+			exit(98);
+		}
 		memcpy(buffer + strlen(buffer), buff, byte);
 	}
 	if (byte == -1)
