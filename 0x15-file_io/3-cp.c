@@ -7,6 +7,15 @@
 #include <string.h>
 
 /**
+ * error_message - function name
+ * @filename: filename
+ */
+void error_message(char *filename)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+	exit(98);
+}
+/**
  * create_new_file - function creates file
  * @filename: file
  * @text_content: content
@@ -37,7 +46,6 @@ void create_new_file(const char *filename, char *text_content)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
 		exit(99);
 	}
-
 	cl = close(fd);
 	if (cl == -1)
 	{
@@ -70,13 +78,11 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
-	while ((byte = read(fd, buff, sizeof(buff))) > 0)
+	while ((byte = read(fd, buff, 1024)) > 0)
 	{
-		if (byte == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
-			exit(98);
-		}
+		if (byte == -1 || buffer == NULL)
+			error_message(filename);
+		buff[strlen(buff)] = '\0';
 		memcpy(buffer + strlen(buffer), buff, byte);
 	}
 	if (byte == -1)
