@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 	int fd;
 	int byte, cl;
 	char *filename = argv[1], *filename2 = argv[2];
-	char buff[1024];
+	char buff[1024], buffer[10024];
 
 	if (argc != 3)
 	{
@@ -70,15 +70,22 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
-	byte = read(fd, buff, sizeof(buff));
+	
+	while ((byte = read(fd, buff, sizeof(buff))) > 0)
+	{
+		
+		memcpy(buffer + strlen(buffer), buff, byte);
+	}
 	if (byte == -1)
 	{
 		close(fd);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
-	buff[byte] = '\0';
-	create_new_file(filename2, buff);
+	buffer[strlen(buffer) - 1] = '\0';
+	create_new_file(filename2, buffer);
+
+	
 	cl = close(fd);
 	if (cl == -1)
 	{
