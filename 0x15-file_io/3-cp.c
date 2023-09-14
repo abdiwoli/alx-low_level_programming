@@ -78,12 +78,13 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
-	while ((byte = read(fd, buff, 1024)) > 0)
+	byte = read(fd, buff, 1024);
+	while (byte > 0)
 	{
-		if (byte == -1 || buffer == NULL)
-			error_message(filename);
 		buff[strlen(buff)] = '\0';
 		memcpy(buffer + strlen(buffer), buff, byte);
+		byte = read(fd, buff, 1024);
+		
 	}
 	if (byte == -1)
 	{
