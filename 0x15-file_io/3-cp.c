@@ -84,7 +84,6 @@ int main(int argc, char **argv)
 		buff[strlen(buff)] = '\0';
 		memcpy(buffer + strlen(buffer), buff, byte);
 		byte = read(fd, buff, 1024);
-		
 	}
 	if (byte == -1)
 	{
