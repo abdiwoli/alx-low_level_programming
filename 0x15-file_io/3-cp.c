@@ -27,9 +27,9 @@ void create_new_file(const char *filename, char *text_content)
 	int size;
 
 	if (access(filename, F_OK) == 0)
-		fd = open(filename, O_WRONLY | O_TRUNC);
+		fd = open(filename, O_WRONLY | O_TRUNC | O_BINARY);
 	else
-		fd = open(filename, O_CREAT | O_WRONLY, 0664);
+		fd = open(filename, O_CREAT | O_WRONLY | O_BINARY, 0664);
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	fd = open(filename, O_RDONLY);
+	fd = open(filename, O_RDONLY | O_BINARY);
 	if (fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
