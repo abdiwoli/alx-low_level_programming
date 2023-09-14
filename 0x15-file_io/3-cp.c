@@ -12,7 +12,7 @@
  */
 void error_message(char *filename)
 {
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+	perror(filename);
 	exit(98);
 }
 /**
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		perror(filename);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 		exit(98);
 	}
 	while ((byte = read(fd, buff, 1024)) > 0)
