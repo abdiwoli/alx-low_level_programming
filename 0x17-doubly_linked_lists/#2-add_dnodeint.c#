@@ -1,0 +1,11 @@
+#include "lists.h"
+#include <stddef.h>
+#include <stdlib.h>
+/**
+ * *add_dnodeint - function adds node
+ * @head: pointer
+ * @n: number
+ * Return: node
+ */
+dlistint_t *add_dnodeint(dlistint_t **head, const int n)
+
