@@ -1,11 +1,18 @@
 #include "lists.h"
 #include <stdlib.h>
+/**
+ * add_dnodeint_end - function name
+ * @head: linkedlist head
+ * @n: number
+ * Return: new node
+ */
+
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
 	dlistint_t *new_node = malloc(sizeof(dlistint_t)), *last;
 
 	if (new_node == NULL)
-		return NULL;
+		return (NULL);
 
 	new_node->prev = NULL;
 	new_node->next = NULL;
