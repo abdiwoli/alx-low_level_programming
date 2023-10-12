@@ -1,7 +1,7 @@
 #include "lists.h"
 #include <stdlib.h>
 /**
- * free_dlistint_t - function name
+ * free_dlistint - function name
  * @head: linkedlist
  */
 void free_dlistint(dlistint_t *head)
