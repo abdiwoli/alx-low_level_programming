@@ -13,8 +13,7 @@ int main(int argc, char **argv)
 	if (argc == 2)
 	{
 		printf("Congrats!\n");
-		return (0);
+		return (1);
 	}
-	printf("Segmentation fault (core dumped)\n");
 	return (1);
 }
