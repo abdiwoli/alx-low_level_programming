@@ -1,0 +1,40 @@
+#include "lists.h"
+#include <stdlib.h>
+/**
+ * insert_dnodeint_at_index - function name
+ * @h: addres of linked list
+ * @idx: index
+ * @n: number
+* Return: node
+ */
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
+{
+	dlistint_t *current = *head;
+	unsigned int nn = 0;
+
+	if (*head == NULL)
+	{
+		return (-1);
+	}
+
+	if (index == 0)
+	{
+		((*head)->prev)->next = (*head)->next;
+		free(*head);
+		return (1);
+
+	}
+	while (nn < index - 1 && current != NULL)
+	{
+		current = current->next;
+		nn++;
+	}
+	if (nn == index - 1)
+	{
+		(current->prev)->next = current->next;
+		free(current);
+		return (1);
+		
+	}
+	return (-1);
+}
