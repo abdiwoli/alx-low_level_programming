@@ -11,6 +11,10 @@
 int main(int argc, char **argv)
 {
 	if (argc == 2)
-		printf("%s", argv[1]);
-	return (0);
+	{
+		printf("Congrats!\n");
+		return (0);
+	}
+	printf("Segmentation fault (core dumped)\n");
+	return (1);
 }
