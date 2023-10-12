@@ -2,8 +2,8 @@
 #include <stdlib.h>
 /**
  * delete_dnodeint_at_index - function name
- * @h: addres of linked list
- * @idx: index
+ * @head: addres of linked list
+ * @index: index
 * Return: int
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
@@ -41,7 +41,6 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		{
 			current->prev->next = current->next;
 		}
-		free(current);
 		return (1);
 	}
 	return (-1);
