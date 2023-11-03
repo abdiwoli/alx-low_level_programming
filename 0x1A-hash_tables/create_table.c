@@ -40,16 +40,3 @@ void insert_item(hash_table_t* table, hash_node_t* item)
 	item->next = table->array[index];
 	table->array[index] = item;
 }
-
-
-
-void print_table(hash_table_t *table)
-{
-    for (unsigned long int i = 0; i < table->size; i++) {
-        hash_node_t *current = table->array[i];
-        while (current != NULL) {
-            printf("Key: %s, Value: %s\n", current->key, current->value);
-            current = current->next;
-        }
-    }
-}
