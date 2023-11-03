@@ -11,10 +11,10 @@ unsigned long int hash_djb2(const unsigned char *str)
 	int n;
 
 	n = *str++;
-	while (n)
+	for  (; n; str++)
 	{
 		value = ((value << 5) + value) + n;
-		n = *str++;
+		n = *str;
 	}
 	return (value);
 }
