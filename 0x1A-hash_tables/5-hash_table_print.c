@@ -11,6 +11,8 @@ void hash_table_print(const hash_table_t *table)
 	hash_node_t *current;
 	unsigned long int i, printed = 0;
 
+	if (table == NULL)
+		return;
 	printf("{");
 	for (i = 0; i < table->size; i++)
 	{
