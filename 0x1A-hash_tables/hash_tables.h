@@ -32,9 +32,9 @@ typedef struct hash_table_s
 } hash_table_t;
 
 hash_table_t *hash_table_create(unsigned long int size);
-hash_table_t* create_table(int size);
+hash_table_t *create_table(int size);
 unsigned long hash_djb2(unsigned char *str);
-hash_node_t* create_item(char* key, char* value);
+hash_node_t *create_item(char* key, char* value);
 void insert_item(hash_table_t* table, hash_node_t* item);
 void look_up(char *key, hash_table_t *table);
 void print_table(hash_table_t *table);
