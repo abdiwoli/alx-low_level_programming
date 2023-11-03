@@ -20,7 +20,7 @@ hash_table_t* create_table(int size)
 
 unsigned long hash_djb2(unsigned char *str)
 {
-    unsigned long hash = 5381;
+	unsigned long hash = 5381;
     int c;
 
     while ((c = *str++)) {

@@ -10,11 +10,8 @@ unsigned long int hash_djb2(const unsigned char *str)
 	unsigned long int value = 5381;
 	int n;
 
-	n = *str++;
-	for  (; n; str++)
-	{
+	
+	for  (; (n = *str); str++)
 		value = ((value << 5) + value) + n;
-		n = *str;
-	}
 	return (value);
 }
