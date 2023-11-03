@@ -50,27 +50,7 @@ void insert_item(hash_table_t* table, hash_node_t* item)
 	table->array[index] = item;
 }
 
-void look_up(char *key, hash_table_t *table)
-{
-    unsigned long hash = hash_djb2(key);
-    int index = hash % table->size;
 
-    // Get the linked list at the specified index
-    hash_node_t *current = table->array[index];
-
-    // Traverse the linked list and check if the key exists
-    while (current != NULL) {
-        if (strcmp(key, current->key) == 0)
-	{
-            printf("Key '%s' found with value: %s\n", key, current->value);
-            return;
-        }
-        current = current->next;
-    }
-
-    // Key was not found in the linked list
-    printf("Key '%s' not found\n", key);
-}
 
 void print_table(hash_table_t *table)
 {

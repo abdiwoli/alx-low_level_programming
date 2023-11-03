@@ -1,4 +1,4 @@
-#include "main.h"
+#include "hash_tables.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -14,5 +14,5 @@ unsigned long int key_index(const unsigned char *key, unsigned long int size)
 	unsigned long hash = hash_djb2(key);
 	int index = hash % size;
 
-	return (hash);
+	return (index);
 }
