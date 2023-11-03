@@ -33,27 +33,24 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	hash_node_t *item;
-	/*hash_node_t *current;*/
+	hash_node_t *current;
 
 	index = key_index((const unsigned char *)key, (unsigned long int)ht->size);
-	/**
-	 *current =  ht->array[index];
-	 *while (current != NULL)
-	 *{
-	 *	if (strcmp(key, current->key) == 0)
-	 *	{
-	 *		free(current->value);
-	 *		current->value = strdup(value);
-	 *		if (current->value == NULL)
-	 *		{
-	 *			return 0;
-	 *		}
-	 *		return 1;
-	 *	}
-	 *	current = current->next;
-	 *	}
-*/
-
+	current =  ht->array[index];
+	while (current != NULL)
+	{
+		if (strcmp(key, current->key) == 0)
+		{
+			free(current->value);
+			current->value = strdup(value);
+			if (current->value == NULL)
+			{
+				return (0);
+			}
+			return (1);
+		}
+		current = current->next;
+	}
 	item = create_item(key, value);
 	if (item == NULL)
 		return (0);
