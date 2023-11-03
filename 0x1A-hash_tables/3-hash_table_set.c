@@ -35,6 +35,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *item;
 	hash_node_t *current;
 
+	if (ht == NULL || key == NULL || value == NULL)
+		return (0)
 	index = key_index((const unsigned char *)key, (unsigned long int)ht->size);
 	current =  ht->array[index];
 	while (current != NULL)
