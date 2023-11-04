@@ -249,29 +249,25 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
  * shash_table_print - prints key/value pairs in sorted hash table order.
  * @ht: the sorted hash table.
  */
-void shash_table_print(const hash_table_t *table)
+void shash_table_print(const shash_table_t *ht)
 {
-	hash_node_t *current;
-	unsigned long int i, printed = 0;
+	unsigned long int count = 0;
+	shash_node_t *node;
 
-	if (table == NULL)
+	if (ht == NULL)
 		return;
+	node  = ht->shead;
 	printf("{");
-	for (i = 0; i < table->size; i++)
+	while (node != NULL)
 	{
-		current = table->array[i];
-		while (current != NULL)
-		{
-			if (printed)
-				printf(", ");
-			printf("'%s': '%s'", current->key, current->value);
-			printed = 1;
-			current = current->next;
-		}
+		if (count > 0)
+			printf(", ");
+		printf("'%s': '%s'", node->key, node->value);
+		node = node->snext;
+		count++;
 	}
 	printf("}\n");
 }
-
 
 /**
  * shash_table_print_rev - prints sorted key/value pairs in reverse.
@@ -280,10 +276,11 @@ void shash_table_print(const hash_table_t *table)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	unsigned long int count = 0;
-	shash_node_t *node = ht->stail;
+	shash_node_t *node;
 
 	if (ht == NULL)
 		return;
+	node = ht->stail;
 	printf("{");
 	while (node != NULL)
 	{
