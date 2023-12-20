@@ -14,5 +14,5 @@ clean:
 oclean:
 	$(RM) -f $(OBJ)
 fclean: clean oclean
-	$(RM) -f $(NAME) if $(Name) exists
+	$(RM) -f $(NAME)
 re: fclean all
