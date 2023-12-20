@@ -1,4 +1,4 @@
-k# Makefile for building the 'school' executable
+# Makefile for building the 'school' executable
 CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
