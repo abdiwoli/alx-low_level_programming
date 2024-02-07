@@ -8,45 +8,36 @@ void print_array(int *array, size_t size)
 	if (array == NULL || size < 1)
 		return;
 
+	printf("Searching in array: ");
 	for (; i < size; i++)
-		printf("%d, ", array[i]);
-	printf("\n");
+	{
+		if (i < size -1)
+			printf("%d, ", array[i]); 
+		else
+			printf("%d\n", array[i]);
+	}
 }
 
 
 int binary_search(int *array, size_t size, int value)
 {
-	if (size == 1)
-		return -1;
-	if (size > 0 && array != NULL)
+	size_t low = 0, high = size - 1;
+	size_t mid;
+	int index = -1;
+
+	while (low <= high)
 	{
-		size_t mid = size / 2;
-		int flag = size % 2;
-
-		printf("mid is %lu\n", mid);
-		printf("value is %d\n",  array[mid]);
-		printf("target is %d\n", value);
-
-		printf("Searching %d in array ", value);
-		print_array(array, size);
-
-		if (array[mid] == value && size > 2)
-			return mid;
-		else if (array[mid] < value)
+		mid = low + (high - low) / 2;
+		print_array(array + low, high - low + 1);
+		if (array[mid] == value)
 		{
-			array = array + mid;
-			size = size - mid;
-			if (flag)
-			{
-				size++;
-				flag = 0;
-			}
+			index = mid;
+			break;
 		}
+		else if (array[mid] > value)
+			high = mid - 1;
 		else
-		{
-			size = mid;
-		}
-		binary_search(array, size -1, value);
+			low = mid + 1;
 	}
-	return (-1);
+	return (index);
 }
