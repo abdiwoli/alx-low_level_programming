@@ -16,37 +16,21 @@ void print_array(int *array, size_t size)
 
 int binary_search(int *array, size_t size, int value)
 {
+	size_t low = 0, high = size -1; 
+	size_t mid = size/2; 
+
 	if (size == 1)
 		return -1;
 	if (size > 0 && array != NULL)
 	{
-		size_t mid = size / 2;
-		int flag = size % 2;
-
-		printf("mid is %lu\n", mid);
-		printf("value is %d\n",  array[mid]);
-		printf("target is %d\n", value);
-
-		printf("Searching %d in array ", value);
-		print_array(array, size);
-
-		if (array[mid] == value && size > 2)
-			return mid;
-		else if (array[mid] < value)
+		while(size > 1)
 		{
-			array = array + mid;
-			size = size - mid;
-			if (flag)
-			{
-				size++;
-				flag = 0;
-			}
+			printf("Searching in array\n");
+			print_array(array, size); 
+			size--; 
+ 
 		}
-		else
-		{
-			size = mid;
-		}
-		binary_search(array, size -1, value);
+		return 2;
 	}
-	return (-1);
+	return -1;
 }
